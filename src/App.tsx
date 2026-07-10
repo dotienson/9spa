@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Pricing from './components/Pricing';
-import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
 import ConstructionBanner from './components/ConstructionBanner';
 
@@ -16,7 +15,6 @@ export default function App() {
         <About />
         <Services />
         <Pricing />
-        <BookingForm />
       </main>
       <Footer />
       <ConstructionBanner />
