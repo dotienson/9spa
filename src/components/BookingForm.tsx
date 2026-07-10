@@ -104,10 +104,10 @@ export default function BookingForm() {
                       className="w-full border-b border-gray-700 py-2 text-base focus:outline-none focus:border-gold bg-transparent text-white [&>option]:bg-[#111111]"
                     >
                       <option value="">Chọn dịch vụ</option>
-                      <option value="mulgwang">Căng bóng da Mulgwang</option>
-                      <option value="hifu">Nâng cơ trẻ hóa HIFU</option>
-                      <option value="meso">Tiêm Meso phục hồi</option>
-                      <option value="laser">Trẻ hóa Laser Fractional</option>
+                      <option value="service-a">Dịch vụ A</option>
+                      <option value="service-b">Dịch vụ B</option>
+                      <option value="service-c">Dịch vụ C</option>
+                      <option value="service-d">Dịch vụ D</option>
                       <option value="other">Tư vấn thăm khám chung</option>
                     </select>
                   </div>

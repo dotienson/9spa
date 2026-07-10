@@ -4,28 +4,28 @@ import { Sparkles, Droplets, Zap, Activity } from 'lucide-react';
 const services = [
   {
     id: 1,
-    title: 'Căng bóng da Mulgwang',
+    title: 'Dịch vụ A',
     description: 'Bổ sung HA siêu vi điểm, cấp ẩm tức thì, mang lại làn da ngậm nước, căng mọng rạng rỡ chuẩn Hàn Quốc.',
     price: 'X.XXX.XXX đ',
     icon: Droplets,
   },
   {
     id: 2,
-    title: 'Nâng cơ trẻ hóa HIFU',
+    title: 'Dịch vụ B',
     description: 'Sử dụng sóng siêu âm hội tụ cường độ cao tác động sâu, kích thích tăng sinh collagen, nâng cơ chảy xệ không xâm lấn.',
     price: 'X.XXX.XXX đ',
     icon: Zap,
   },
   {
     id: 3,
-    title: 'Tiêm Meso phục hồi',
+    title: 'Dịch vụ C',
     description: 'Đưa dưỡng chất trực tiếp vào da, phục hồi cấu trúc da hư tổn, giảm nhăn, se khít lỗ chân lông hiệu quả.',
     price: 'X.XXX.XXX đ',
     icon: Activity,
   },
   {
     id: 4,
-    title: 'Trẻ hóa Laser Fractional',
+    title: 'Dịch vụ D',
     description: 'Loại bỏ hắc sắc tố, làm đều màu da, mờ thâm nám và tái tạo bề mặt da láng mịn bằng công nghệ Laser tiên tiến.',
     price: 'X.XXX.XXX đ',
     icon: Sparkles,

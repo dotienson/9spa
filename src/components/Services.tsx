@@ -4,25 +4,25 @@ import { Sparkles, Droplets, Zap, Activity } from 'lucide-react';
 const servicesList = [
   {
     id: 1,
-    title: 'Trẻ Hóa Da Chuyên Sâu',
+    title: 'Dịch vụ A',
     description: 'Ứng dụng công nghệ ánh sáng và laser tiên tiến giúp tái tạo bề mặt da, xóa mờ nếp nhăn và hắc sắc tố, mang lại làn da đều màu, săn chắc.',
     icon: Sparkles,
   },
   {
     id: 2,
-    title: 'Phục Hồi Cấp Ẩm Đa Tầng',
+    title: 'Dịch vụ B',
     description: 'Liệu pháp tiêm tinh chất siêu vi điểm đưa dưỡng chất vào sâu trong da, cải thiện độ đàn hồi và cấu trúc da mỏng yếu.',
     icon: Droplets,
   },
   {
     id: 3,
-    title: 'Nâng Cơ Trẻ Hóa Không Xâm Lấn',
+    title: 'Dịch vụ C',
     description: 'Sử dụng sóng siêu âm hội tụ hoặc RF để kích thích tăng sinh collagen, định hình khuôn mặt V-line và xóa rãnh cười mà không cần phẫu thuật.',
     icon: Zap,
   },
   {
     id: 4,
-    title: 'Chăm Sóc Da Liễu Y Khoa',
+    title: 'Dịch vụ D',
     description: 'Phác đồ điều trị mụn, sẹo và các vấn đề da liễu khác được thiết kế cá nhân hóa bởi đội ngũ chuyên gia da liễu giàu kinh nghiệm.',
     icon: Activity,
   },
