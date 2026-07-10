@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Calendar, User, Phone, MessageSquare, CheckCircle2 } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function BookingForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);

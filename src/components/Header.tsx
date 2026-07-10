@@ -3,7 +3,13 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Logo from './Logo';
 
-export default function Header() {
+export default function Header({ 
+  currentTab, 
+  setCurrentTab 
+}: { 
+  currentTab: 'home' | 'services' | 'pricing';
+  setCurrentTab: (tab: 'home' | 'services' | 'pricing') => void;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Prevent scrolling when mobile menu is open
@@ -24,16 +30,16 @@ export default function Header() {
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center z-50">
-            <a href="#" onClick={() => setIsOpen(false)}>
+            <button onClick={() => { setCurrentTab('home'); setIsOpen(false); window.scrollTo(0, 0); }}>
               <Logo className="h-16 md:h-24 transition-all" />
-            </a>
+            </button>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-10 text-sm uppercase tracking-widest font-medium">
-            <a href="#about" className="text-[#3D3833] hover:text-gold transition-colors">Câu Chuyện</a>
-            <a href="#services" className="text-[#3D3833] hover:text-gold transition-colors">Dịch Vụ</a>
-            <a href="#pricing" className="text-[#3D3833] hover:text-gold transition-colors">Bảng Giá</a>
+            <button onClick={() => { setCurrentTab('home'); window.scrollTo(0, 0); }} className={`${currentTab === 'home' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
+            <button onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }} className={`${currentTab === 'services' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
+            <button onClick={() => { setCurrentTab('pricing'); window.scrollTo(0, 0); }} className={`${currentTab === 'pricing' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Bảng Giá</button>
           </nav>
 
           {/* Desktop CTA */}
@@ -80,9 +86,9 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-[#FCFBF9] md:hidden flex flex-col items-center justify-center pt-20"
           >
             <nav className="flex flex-col items-center gap-8 w-full px-6">
-              <a href="#about" onClick={() => setIsOpen(false)} className="text-2xl font-serif text-[#3D3833] hover:text-gold transition-colors">Câu Chuyện</a>
-              <a href="#services" onClick={() => setIsOpen(false)} className="text-2xl font-serif text-[#3D3833] hover:text-gold transition-colors">Dịch Vụ</a>
-              <a href="#pricing" onClick={() => setIsOpen(false)} className="text-2xl font-serif text-[#3D3833] hover:text-gold transition-colors">Bảng Giá</a>
+              <button onClick={() => { setCurrentTab('home'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'home' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
+              <button onClick={() => { setCurrentTab('services'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'services' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
+              <button onClick={() => { setCurrentTab('pricing'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'pricing' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Bảng Giá</button>
               
               <div className="w-12 h-[1px] bg-gold/50 my-4"></div>
               

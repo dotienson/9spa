@@ -8,7 +8,8 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="space-y-4 md:space-y-6"
           >
             <span className="text-gold text-xs md:text-sm font-bold tracking-[0.3em] uppercase block mb-2 md:mb-4">
@@ -32,7 +33,8 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="relative mt-4 md:mt-0"
           >
             <div className="aspect-[4/3] bg-white border border-gold/20 p-2 overflow-hidden relative z-10">

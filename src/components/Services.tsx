@@ -30,14 +30,14 @@ const servicesList = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-[#FCFBF9] relative border-b border-gold/10">
+    <section id="services" className="py-16 md:py-24 bg-[#FCFBF9] relative border-b border-gold/10 min-h-[90vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.8 }}
             className="text-gold text-xs md:text-sm font-bold tracking-[0.3em] uppercase block mb-3 md:mb-4"
           >
             Dịch Vụ Tiêu Biểu
@@ -45,8 +45,8 @@ export default function Services() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, amount: 0.8 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="font-serif text-3xl md:text-5xl text-[#3D3833] mb-4 md:mb-6"
           >
             Personal Magic: <br />
@@ -55,8 +55,8 @@ export default function Services() {
           <motion.div 
             initial={{ opacity: 0, width: 0 }}
             whileInView={{ opacity: 1, width: '4rem' }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, amount: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="h-[1px] bg-gold mx-auto mb-6"
           />
         </div>
@@ -67,8 +67,8 @@ export default function Services() {
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               className="bg-white p-6 md:p-8 rounded-sm shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all border border-gold/10 hover:border-gold/30"
             >
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 md:mb-6">
