@@ -3,7 +3,7 @@ import Logo from './Logo';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] text-white/50 pt-20 pb-10 border-t border-[#1A1A1A]">
+    <footer className="bg-[#FDFCF9] text-gray-600 pt-20 pb-10 border-t border-gold/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
@@ -11,21 +11,21 @@ export default function Footer() {
             <div className="mb-6 flex items-center">
               <Logo />
             </div>
-            <p className="text-sm text-white/50 leading-relaxed max-w-sm tracking-wide">
+            <p className="text-sm text-gray-600 leading-relaxed max-w-sm tracking-wide">
               Nơi đánh thức vẻ đẹp vượt thời gian. Chúng tôi mang đến những liệu trình trẻ hóa da tiên tiến, chuẩn y khoa, giúp bạn tự tin tỏa sáng với làn da hoàn mỹ.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-white text-gray-500 transition-all">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-white text-gray-500 transition-all">
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           <div className="md:col-span-3 space-y-6">
-            <h4 className="text-white font-bold uppercase tracking-[0.3em] text-xs md:text-sm mb-2">Liên Kết</h4>
+            <h4 className="text-[#2D2D2D] font-bold uppercase tracking-[0.3em] text-xs md:text-sm mb-2">Liên Kết</h4>
             <ul className="space-y-3 text-sm uppercase tracking-widest">
               <li><a href="#about" className="hover:text-gold transition-colors">Về 9pm Skincare</a></li>
               <li><a href="#services" className="hover:text-gold transition-colors">Dịch vụ & Bảng giá</a></li>
@@ -35,7 +35,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-4 space-y-6">
-            <h4 className="text-white font-bold uppercase tracking-[0.3em] text-xs md:text-sm mb-2">Liên Hệ</h4>
+            <h4 className="text-[#2D2D2D] font-bold uppercase tracking-[0.3em] text-xs md:text-sm mb-2">Liên Hệ</h4>
             <ul className="space-y-4 text-sm tracking-wide">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-[0.2em] text-white/40">
+        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-[0.2em] text-gray-500">
           <p>&copy; {new Date().getFullYear()} 9PM Skincare Medical Spa</p>
           <p className="text-center md:text-left">Thiết kế tinh tế dành riêng cho sắc đẹp của bạn</p>
         </div>

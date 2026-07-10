@@ -34,7 +34,7 @@ const services = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-[#1A1A1A] relative">
+    <section id="pricing" className="py-24 bg-[#F7F4EB] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -51,7 +51,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-3xl md:text-5xl text-white mb-6"
+            className="font-serif text-3xl md:text-5xl text-[#2D2D2D] mb-6"
           >
             Nâng Niu Làn Da <span className="italic text-gold">Hoàn Mỹ</span>
           </motion.h2>
@@ -67,7 +67,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-base text-gray-400 max-w-md mx-auto leading-relaxed"
+            className="text-base text-gray-600 max-w-md mx-auto leading-relaxed"
           >
             9pm Skincare cam kết sử dụng công nghệ chính hãng, sản phẩm cao cấp cùng phác đồ điều trị được cá nhân hóa bởi đội ngũ chuyên gia da liễu.
           </motion.p>
@@ -81,14 +81,14 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#111111] border border-gold/20 p-6 rounded-sm shadow-sm flex flex-col hover:border-gold/50 transition-colors"
+              className="bg-white border border-gold/20 p-6 rounded-sm shadow-sm flex flex-col hover:border-gold/50 transition-colors"
             >
-              <div className="flex justify-between items-end border-b border-dashed border-gray-700 pb-3 mb-3">
+              <div className="flex justify-between items-end border-b border-dashed border-gray-200 pb-3 mb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold">
                     <service.icon className="w-4 h-4" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-base font-semibold text-white">
+                  <h3 className="text-base font-semibold text-[#2D2D2D]">
                     {service.title}
                   </h3>
                 </div>
@@ -96,7 +96,7 @@ export default function Pricing() {
                   {service.price}
                 </span>
               </div>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed pl-11">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed pl-11">
                 {service.description}
               </p>
             </motion.div>

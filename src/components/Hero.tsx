@@ -2,15 +2,15 @@ import { motion } from 'motion/react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-[80px] overflow-hidden bg-[#111111]">
+    <section className="relative min-h-screen flex items-center justify-center pt-[80px] overflow-hidden bg-[#FDFCF9]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=2070"
           alt="Spa Treatment"
-          className="w-full h-full object-cover object-center opacity-30"
+          className="w-full h-full object-cover object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#111111]/80 via-[#111111]/60 to-[#111111]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FDFCF9]/90 via-[#FDFCF9]/70 to-[#FDFCF9]"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
@@ -23,12 +23,12 @@ export default function Hero() {
           <span className="text-gold text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-4 block">
             Khoảng Thư Giãn Thuần Túy
           </span>
-          <h1 className="font-serif text-5xl md:text-7xl text-white leading-tight mb-8">
+          <h1 className="font-serif text-5xl md:text-7xl text-[#2D2D2D] leading-tight mb-8">
             Đánh Thức Làn Da <br className="hidden md:block" />
             <span className="italic text-gold">Thanh Xuân</span>
           </h1>
           
-          <div className="text-base md:text-lg text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-light text-justify md:text-center">
+          <div className="text-base md:text-lg text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed font-light text-justify md:text-center">
             <p>
               Nghiên cứu xã hội học cho ta biết về "khoảng thư giãn thuần tuý" (uncontaminated leisure) của chị em phụ nữ. Mở đầu từ 9:00 tối, khi con đã ngủ, cũng là lúc các bạn, các mẹ bắt đầu ngơi tay để có thời gian dành cho chính bản thân mình. Đó cũng là khung giờ mà y học khuyên chúng ta nên bắt đầu thư giãn, nghỉ ngơi để cơ thể được chữa lành...
             </p>

@@ -30,7 +30,7 @@ const servicesList = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-[#111111] relative border-b border-[#1A1A1A]">
+    <section id="services" className="py-24 bg-[#FDFCF9] relative border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -47,7 +47,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-3xl md:text-5xl text-white mb-6"
+            className="font-serif text-3xl md:text-5xl text-[#2D2D2D] mb-6"
           >
             Nâng Tầm Nhan Sắc <span className="italic text-gold">Việt</span>
           </motion.h2>
@@ -68,15 +68,15 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#1A1A1A] p-8 rounded-sm shadow-sm flex flex-col items-center text-center hover:bg-[#222222] transition-colors border border-transparent hover:border-gold/20"
+              className="bg-white p-8 rounded-sm shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all border border-gold/10 hover:border-gold/30"
             >
               <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-6">
                 <service.icon className="w-8 h-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-4">
+              <h3 className="text-lg font-bold text-[#2D2D2D] mb-4">
                 {service.title}
               </h3>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
