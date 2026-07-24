@@ -33,7 +33,7 @@ export default function BookingForm() {
                   <Phone className="w-5 h-5 text-gold" />
                   <div>
                     <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-bold mb-1">Hotline</p>
-                    <p className="text-base font-mono tracking-wider">0984 144 492</p>
+                    <p className="text-base font-mono tracking-wider">0374 558 669</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-[#2D2D2D]">
@@ -92,7 +92,7 @@ export default function BookingForm() {
                       id="phone" 
                       required
                       className="w-full border-b border-gray-300 py-2 text-base focus:outline-none focus:border-gold bg-transparent text-[#2D2D2D]"
-                      placeholder="0984 144 492"
+                      placeholder="0374 558 669"
                     />
                   </div>
 

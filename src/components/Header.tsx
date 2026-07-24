@@ -45,10 +45,10 @@ export default function Header({
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
             <a
-              href="tel:0984144492"
+              href="tel:0374558669"
               className="bg-gold px-6 py-3 text-sm md:text-base font-bold uppercase tracking-widest text-white hover:bg-[#B38F2E] transition-all shadow-md rounded-sm"
             >
-              Hotline: 0984 144 492
+              Hotline: 0374 558 669
             </a>
           </div>
 
@@ -93,10 +93,10 @@ export default function Header({
               <div className="w-12 h-[1px] bg-gold/50 my-4"></div>
               
               <a 
-                href="tel:0984144492" 
+                href="tel:0374558669" 
                 className="bg-gold px-8 py-4 text-base font-bold tracking-[0.1em] text-white hover:bg-[#B38F2E] transition-all shadow-md rounded-sm w-full text-center flex items-center justify-center gap-2"
               >
-                HOTLINE: 0984 144 492
+                HOTLINE: 0374 558 669
               </a>
             </nav>
             
