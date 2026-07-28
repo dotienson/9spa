@@ -21,7 +21,7 @@ export default function DoctorInfo({ setCurrentTab }: { setCurrentTab: (tab: 'ho
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start animate-fade-in-up"
+          className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start"
         >
           <div className="hidden md:block md:col-span-5 relative md:sticky top-24 max-w-sm mx-auto md:max-w-none w-full">
             <div className="aspect-[3/4] bg-neutral-100 border border-gold/30 p-2 relative z-10">

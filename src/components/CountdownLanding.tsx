@@ -58,7 +58,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
       </div>
 
       <div
-        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-20 animate-fade-in-up"
+        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-20"
       >
         <Logo className="h-24 md:h-48 mb-6 md:mb-10" />
 
@@ -107,7 +107,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           href="https://share.google/65bPVQf5EgZLYkwWS"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-1 sm:mb-2 md:mb-4 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
+          className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-0.5 sm:mb-1 md:mb-2 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
         >
           Số 46, ngõ 196 Nguyễn Sơn, Bồ Đề
         </a>
