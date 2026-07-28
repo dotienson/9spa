@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Quicksand", ui-sans-serif, system-ui, sans-serif;
-  --color-gold: #C29B70;
-  --color-gold-light: #E6D8C9;
-  --color-gold-dark: #A37C52;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --color-gold: #9B702B;
+  --color-gold-light: #D4B886;
+  --color-gold-dark: #7A5720;
 }
 
 html {

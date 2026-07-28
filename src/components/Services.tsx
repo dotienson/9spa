@@ -30,7 +30,7 @@ const servicesList = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-[#FCFBF9] relative border-b border-gold/10 min-h-[90vh]">
+    <section id="services" className="py-12 md:py-16 bg-[#FCFBF9] relative border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
@@ -47,7 +47,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="font-serif text-3xl md:text-5xl text-[#3D3833] mb-4 md:mb-6"
+            className="font-serif text-3xl md:text-5xl text-[#1F1A17] font-bold mb-4 md:mb-6"
           >
             Personal Magic: <br />
             <span className="italic text-gold">Từ 10 năm Kinh nghiệm</span>
@@ -69,15 +69,15 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white p-6 md:p-8 rounded-sm shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all border border-gold/10 hover:border-gold/30"
+              className="bg-white p-6 md:p-8 rounded-sm shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all border border-gold/20 hover:border-gold/50"
             >
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 md:mb-6">
                 <service.icon className="w-6 h-6 md:w-8 md:h-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-base md:text-lg font-bold text-[#3D3833] mb-2 md:mb-4">
+              <h3 className="text-base md:text-lg font-bold text-[#1F1A17] mb-2 md:mb-4">
                 {service.title}
               </h3>
-              <p className="text-sm md:text-base text-[#756E65] leading-relaxed">
+              <p className="text-sm md:text-base text-[#4D4741] font-medium leading-relaxed">
                 {service.description}
               </p>
             </motion.div>

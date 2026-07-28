@@ -36,17 +36,17 @@ export default function Header({
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex gap-10 text-sm uppercase tracking-widest font-medium">
-            <button onClick={() => { setCurrentTab('home'); window.scrollTo(0, 0); }} className={`${currentTab === 'home' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
-            <button onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }} className={`${currentTab === 'services' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
-            <button onClick={() => { setCurrentTab('pricing'); window.scrollTo(0, 0); }} className={`${currentTab === 'pricing' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Bảng Giá</button>
+          <nav className="hidden md:flex gap-10 text-sm uppercase tracking-widest font-bold">
+            <button onClick={() => { setCurrentTab('home'); window.scrollTo(0, 0); }} className={`${currentTab === 'home' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
+            <button onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }} className={`${currentTab === 'services' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
+            <button onClick={() => { setCurrentTab('pricing'); window.scrollTo(0, 0); }} className={`${currentTab === 'pricing' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Bảng Giá</button>
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
             <a
               href="tel:0374558669"
-              className="bg-gold px-6 py-3 text-sm md:text-base font-bold uppercase tracking-widest text-white hover:bg-[#B38F2E] transition-all shadow-md rounded-sm"
+              className="bg-gold px-6 py-3 text-sm md:text-base font-bold uppercase tracking-widest text-white hover:bg-gold-dark transition-all shadow-md rounded-sm"
             >
               Hotline: 0374 558 669
             </a>
@@ -56,7 +56,7 @@ export default function Header({
           <div className="md:hidden flex items-center z-50">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#3D3833] hover:text-gold focus:outline-none p-2"
+              className="text-[#1F1A17] hover:text-gold focus:outline-none p-2"
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
@@ -86,15 +86,15 @@ export default function Header({
             className="fixed inset-0 z-40 bg-[#FCFBF9] md:hidden flex flex-col items-center justify-center pt-20"
           >
             <nav className="flex flex-col items-center gap-8 w-full px-6">
-              <button onClick={() => { setCurrentTab('home'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'home' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
-              <button onClick={() => { setCurrentTab('services'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'services' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
-              <button onClick={() => { setCurrentTab('pricing'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif ${currentTab === 'pricing' ? 'text-gold' : 'text-[#3D3833]'} hover:text-gold transition-colors`}>Bảng Giá</button>
+              <button onClick={() => { setCurrentTab('home'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif font-bold ${currentTab === 'home' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Câu Chuyện</button>
+              <button onClick={() => { setCurrentTab('services'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif font-bold ${currentTab === 'services' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Dịch Vụ</button>
+              <button onClick={() => { setCurrentTab('pricing'); setIsOpen(false); window.scrollTo(0, 0); }} className={`text-2xl font-serif font-bold ${currentTab === 'pricing' ? 'text-gold' : 'text-[#1F1A17]'} hover:text-gold transition-colors`}>Bảng Giá</button>
               
               <div className="w-12 h-[1px] bg-gold/50 my-4"></div>
               
               <a 
                 href="tel:0374558669" 
-                className="bg-gold px-8 py-4 text-base font-bold tracking-[0.1em] text-white hover:bg-[#B38F2E] transition-all shadow-md rounded-sm w-full text-center flex items-center justify-center gap-2"
+                className="bg-gold px-8 py-4 text-base font-bold tracking-[0.1em] text-white hover:bg-gold-dark transition-all shadow-md rounded-sm w-full text-center flex items-center justify-center gap-2"
               >
                 HOTLINE: 0374 558 669
               </a>
