@@ -12,7 +12,33 @@
     <meta name="description" content="Cuối ngõ nhỏ yên bình, dưới tán hoa giấy, có một medspa nhỏ sắp khai trương. 8:00 ngày 08/08/2026." />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        body, html { margin: 0; padding: 0; background-color: #FDFCFB; }
+        .initial-loader-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          height: 100dvh;
+          width: 100%;
+        }
+        .initial-spinner {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(206, 170, 105, 0.3);
+          border-radius: 50%;
+          border-top-color: #CEAA69;
+          animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+      <div class="initial-loader-container">
+        <div class="initial-spinner"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

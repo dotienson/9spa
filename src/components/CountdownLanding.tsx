@@ -51,10 +51,12 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
 
   return (
     <section className="min-h-[100dvh] bg-[#FDFCFB] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-light rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+      {/* Background decoration - simplified for mobile performance using gradients instead of blur */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none overflow-hidden"
+        style={{
+          background: 'radial-gradient(circle at 10% 10%, rgba(206,170,105,0.15) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(206,170,105,0.15) 0%, transparent 40%)'
+        }}
+      >
       </div>
 
       <div
@@ -143,7 +145,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
                 ✕
               </button>
               <h3 className="text-xl md:text-2xl font-serif font-bold text-[#1F1A17] mb-6 text-center">
-                Bạn có mã Khách quen nhà 9PM chưa?
+                Xin nhập mã giới thiệu
               </h3>
               <form onSubmit={handleCodeSubmit} className="flex flex-col gap-4">
                 <div>
