@@ -50,18 +50,15 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
   };
 
   return (
-    <section className="min-h-screen bg-[#FDFCFB] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+    <section className="min-h-[100dvh] bg-[#FDFCFB] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-[100px] animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-light rounded-full mix-blend-multiply filter blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-20"
+      <div
+        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-20 animate-fade-in-up"
       >
         <Logo className="h-24 md:h-48 mb-6 md:mb-10" />
 
@@ -110,18 +107,18 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           href="https://share.google/65bPVQf5EgZLYkwWS"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-4 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
+          className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-1 sm:mb-2 md:mb-4 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
         >
           Số 46, ngõ 196 Nguyễn Sơn, Bồ Đề
         </a>
         
         <button
           onClick={() => setShowPopup(true)}
-          className="text-gold-dark text-xs sm:text-sm md:text-base font-bold underline underline-offset-4 decoration-gold/50 hover:decoration-gold transition-colors leading-relaxed px-2"
+          className="text-gold-dark text-xs sm:text-sm md:text-base font-bold underline underline-offset-4 decoration-gold/50 hover:decoration-gold transition-colors leading-relaxed px-2 mb-4"
         >
           Xem trước các dịch vụ của 9 p.m Skincare
         </button>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {showPopup && (

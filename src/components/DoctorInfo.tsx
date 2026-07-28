@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 export default function DoctorInfo({ setCurrentTab }: { setCurrentTab: (tab: 'home' | 'doctor') => void }) {
   return (
-    <section className="min-h-screen bg-[#FDFCFB] flex flex-col p-4 md:p-8 relative">
+    <section className="min-h-[100dvh] bg-[#FDFCFB] flex flex-col p-4 md:p-8 relative">
       <div className="max-w-5xl mx-auto w-full">
         {/* Header simple */}
         <div className="flex flex-col sm:flex-row items-center justify-between py-6 mb-8 md:mb-16 border-b border-gold/20 gap-4">
@@ -20,11 +20,8 @@ export default function DoctorInfo({ setCurrentTab }: { setCurrentTab: (tab: 'ho
           <div className="hidden sm:block w-[100px]"></div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start"
+        <div
+          className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start animate-fade-in-up"
         >
           <div className="hidden md:block md:col-span-5 relative md:sticky top-24 max-w-sm mx-auto md:max-w-none w-full">
             <div className="aspect-[3/4] bg-neutral-100 border border-gold/30 p-2 relative z-10">
@@ -138,7 +135,7 @@ export default function DoctorInfo({ setCurrentTab }: { setCurrentTab: (tab: 'ho
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
