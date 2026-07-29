@@ -5,11 +5,11 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>9PM SkinCare Nguyễn Sơn</title>
-    <meta property="og:title" content="9PM SkinCare Nguyễn Sơn" />
-    <meta property="og:description" content="Cuối ngõ nhỏ yên bình, dưới tán hoa giấy, có một medspa nhỏ sắp khai trương. 8:00 ngày 08/08/2026." />
+    <meta property="og:title" content="9 p.m. SkinCare là medical spa được vận hành bởi bác sĩ chuyên khoa da liễu thực thụ. Thế mạnh: Chuyên môn y khoa bài bản; Am hiểu hoạt chất và công nghệ; Kinh nghiệm thực hành hàng đầu. Công nghệ sử dụng: DPL, LASER Fractional CO2, AquaPeel. Địa chỉ: Số 46 - Ngõ 196 Nguyễn Sơn - Bồ Đề. Hotline và Zalo: 0374 558 669" />
+    <meta property="og:description" content="9 p.m. SkinCare là medical spa được vận hành bởi bác sĩ chuyên khoa da liễu thực thụ. Thế mạnh: Chuyên môn y khoa bài bản; Am hiểu hoạt chất và công nghệ; Kinh nghiệm thực hành hàng đầu. Công nghệ sử dụng: DPL, LASER Fractional CO2, AquaPeel. Địa chỉ: Số 46 - Ngõ 196 Nguyễn Sơn - Bồ Đề. Hotline và Zalo: 0374 558 669" />
     <meta property="og:image" content="/logo.png" />
     <meta property="og:type" content="website" />
-    <meta name="description" content="Cuối ngõ nhỏ yên bình, dưới tán hoa giấy, có một medspa nhỏ sắp khai trương. 8:00 ngày 08/08/2026." />
+    <meta name="description" content="9 p.m. SkinCare là medical spa được vận hành bởi bác sĩ chuyên khoa da liễu thực thụ. Thế mạnh: Chuyên môn y khoa bài bản; Am hiểu hoạt chất và công nghệ; Kinh nghiệm thực hành hàng đầu. Công nghệ sử dụng: DPL, LASER Fractional CO2, AquaPeel. Địa chỉ: Số 46 - Ngõ 196 Nguyễn Sơn - Bồ Đề. Hotline và Zalo: 0374 558 669" />
   </head>
   <body>
     <div id="root">
@@ -51,6 +51,28 @@
       Cal.ns["120min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
     <!-- Cal element-click embed code ends -->
+    <script>
+      // Disable right click
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+      // Disable keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (
+          e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || 
+          (e.ctrlKey && (e.key === 'u' || e.key === 'U')) ||
+          (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'I')) ||
+          (e.metaKey && (e.key === 'u' || e.key === 'U')) ||
+          (e.ctrlKey && (e.key === 's' || e.key === 'S')) ||
+          (e.metaKey && (e.key === 's' || e.key === 'S')) ||
+          (e.ctrlKey && (e.key === 'c' || e.key === 'C')) ||
+          (e.metaKey && (e.key === 'c' || e.key === 'C'))
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
   </body>
 </html>
 
