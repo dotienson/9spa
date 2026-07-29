@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
 
@@ -80,25 +80,67 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           <TimeUnit value={timeLeft.seconds} label="Giây" />
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-6 w-full max-w-lg mx-auto mb-8 md:mb-10 px-2 sm:px-4">
-          <a
-            href="tel:0374558669"
-            className="flex-1 flex flex-col items-center justify-center gap-1 bg-gold text-white px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark transition-colors shadow-md text-center"
-          >
-            <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
-              <span>Hotline đặt lịch</span>
-            </div>
-            <span className="text-sm sm:text-base md:text-lg">0374 558 669</span>
-          </a>
-          <button
-            onClick={() => { setCurrentTab('doctor'); window.scrollTo(0, 0); }}
-            className="flex-1 flex flex-col items-center justify-center gap-1 bg-transparent border-2 border-[#1F1A17] text-[#1F1A17] px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#1F1A17] hover:text-white transition-colors text-center"
-          >
-            <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
-              <span>Thông tin</span>
-            </div>
-            <span className="text-sm sm:text-base md:text-lg">Chuyên gia</span>
-          </button>
+        <div className="flex flex-col gap-3 md:gap-4 w-full max-w-lg mx-auto mb-8 md:mb-10 px-2 sm:px-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-6 w-full">
+            <a
+              href="tel:0374558669"
+              className="flex-1 flex flex-col items-center justify-center gap-1 bg-gold text-white px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark transition-colors shadow-md text-center"
+            >
+              <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
+                <span>Hotline đặt lịch</span>
+              </div>
+              <span className="text-sm sm:text-base md:text-lg">0374 558 669</span>
+            </a>
+            <button
+              onClick={() => { setCurrentTab('doctor'); window.scrollTo(0, 0); }}
+              className="flex-1 flex flex-col items-center justify-center gap-1 bg-transparent border-2 border-[#1F1A17] text-[#1F1A17] px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#1F1A17] hover:text-white transition-colors text-center"
+            >
+              <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
+                <span>Thông tin</span>
+              </div>
+              <span className="text-sm sm:text-base md:text-lg">Chuyên gia</span>
+            </button>
+          </div>
+          
+          {/* Desktop Cal.com Buttons */}
+          <div className="hidden md:flex flex-row gap-4 md:gap-6 w-full">
+            <button
+              data-cal-link="9pmskincare/basic"
+              data-cal-namespace="basic"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              className="flex-1 flex items-center justify-center bg-[#1F1A17] text-white px-4 py-4 md:py-5 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center text-sm sm:text-base md:text-lg"
+            >
+              Đặt lịch Cơ bản
+            </button>
+            <button
+              data-cal-link="9pmskincare/120min"
+              data-cal-namespace="120min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              className="flex-1 flex items-center justify-center bg-gold-dark text-white px-4 py-4 md:py-5 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center text-sm sm:text-base md:text-lg"
+            >
+              Đặt lịch Chuyên sâu
+            </button>
+          </div>
+
+          {/* Mobile Direct Links */}
+          <div className="flex md:hidden flex-col gap-3 w-full">
+            <a
+              href="https://cal.com/9pmskincare/basic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center bg-[#1F1A17] text-white px-4 py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center text-sm sm:text-base"
+            >
+              Đặt lịch Cơ bản
+            </a>
+            <a
+              href="https://cal.com/9pmskincare/120min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center bg-gold-dark text-white px-4 py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center text-sm sm:text-base"
+            >
+              Đặt lịch Chuyên sâu
+            </a>
+          </div>
         </div>
 
         <p className="text-xs sm:text-sm md:text-base text-[#4D4741] max-w-2xl mx-auto italic mb-8 md:mb-12 leading-relaxed px-4 md:px-6">
