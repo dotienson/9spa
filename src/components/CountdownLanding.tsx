@@ -46,7 +46,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
       </div>
 
       <div
-        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-20"
+        className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center my-auto pt-10 pb-10"
       >
         <Logo className="h-24 md:h-48 mb-6 md:mb-10" />
 
@@ -169,6 +169,10 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
             (Click để chỉ đường trên Google Map)
           </a>
         </div>
+        
+        <div className="mt-6 md:mt-10 text-center w-full text-[10px] sm:text-xs text-[#4D4741] px-4">
+          Copyright &copy; 9 p.m. SkinCare Medspa 2026 Mọi quyền đều được bảo vệ
+        </div>
       </div>
 
       <AnimatePresence>
@@ -260,9 +264,6 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           </div>
         )}
       </AnimatePresence>
-      <div className="absolute bottom-2 text-center w-full text-[10px] sm:text-xs text-[#4D4741] px-4">
-        Copyright &copy; 9 p.m. SkinCare Medspa 2026 Mọi quyền đều được bảo vệ
-      </div>
     </section>
   );
 }
