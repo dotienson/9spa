@@ -11,9 +11,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
   });
   
   const [showPopup, setShowPopup] = useState(false);
-  const [code, setCode] = useState('');
-  const [error, setError] = useState(false);
-
+  
   useEffect(() => {
     const targetDate = new Date('2026-08-08T08:00:00').getTime();
     
@@ -36,18 +34,6 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
 
     return () => clearInterval(interval);
   }, []);
-
-  const handleCodeSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (code === '0808') {
-      window.open('https://drive.google.com/drive/folders/1nXyUEfjuNdpgQmMr4THCFtj9drZAthVu?usp=sharing', '_blank');
-      setShowPopup(false);
-      setCode('');
-      setError(false);
-    } else {
-      setError(true);
-    }
-  };
 
   return (
     <section className="min-h-[100dvh] bg-[#FDFCFB] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
@@ -80,66 +66,84 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           <TimeUnit value={timeLeft.seconds} label="Giây" />
         </div>
 
-        <div className="flex flex-col gap-3 md:gap-4 w-full max-w-lg mx-auto mb-8 md:mb-10 px-2 sm:px-4">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-6 w-full">
+        <div className="flex flex-col gap-3 md:gap-4 w-full max-w-3xl mx-auto mb-8 md:mb-10 px-2 sm:px-4">
+          {/* Hàng 1 */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
             <a
               href="tel:0374558669"
-              className="flex-1 flex flex-col items-center justify-center gap-1 bg-gold text-white px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark transition-colors shadow-md text-center"
+              className="flex flex-col items-center justify-center gap-1 bg-gold text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark transition-colors shadow-md text-center h-full"
             >
-              <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
-                <span>Hotline đặt lịch</span>
-              </div>
-              <span className="text-sm sm:text-base md:text-lg">0374 558 669</span>
+              <span className="text-[10px] md:text-xs opacity-90">Hotline Gọi</span>
+              <span className="text-sm md:text-base">0374 558 669</span>
             </a>
-            <button
-              onClick={() => { setCurrentTab('doctor'); window.scrollTo(0, 0); }}
-              className="flex-1 flex flex-col items-center justify-center gap-1 bg-transparent border-2 border-[#1F1A17] text-[#1F1A17] px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#1F1A17] hover:text-white transition-colors text-center"
+            
+            <a
+              href="https://zalo.me/0374558669"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center gap-1 bg-[#0068FF] text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#0054cc] transition-colors shadow-md text-center h-full"
             >
-              <div className="flex items-center gap-2 text-[9px] md:text-xs opacity-90 mb-0.5 md:mb-1">
-                <span>Thông tin</span>
-              </div>
-              <span className="text-sm sm:text-base md:text-lg">Chuyên gia</span>
-            </button>
-          </div>
-          
-          {/* Desktop Cal.com Buttons */}
-          <div className="hidden md:flex flex-row gap-4 md:gap-6 w-full">
+              <span className="text-[10px] md:text-xs opacity-90">Nhắn tin Zalo</span>
+              <span className="text-sm md:text-base">0374 558 669</span>
+            </a>
+
+            {/* Desktop Cal.com Buttons */}
             <button
               data-cal-link="9pmskincare/basic"
               data-cal-namespace="basic"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-              className="flex-1 flex items-center justify-center bg-[#1F1A17] text-white px-4 py-4 md:py-5 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center text-sm sm:text-base md:text-lg"
+              className="hidden md:flex flex-col items-center justify-center gap-1 bg-[#1F1A17] text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center h-full"
             >
-              Đặt lịch Cơ bản
+              <span className="text-sm md:text-base whitespace-nowrap">Đặt lịch</span>
+              <span className="text-sm md:text-base whitespace-nowrap">Cơ bản</span>
             </button>
+            
             <button
               data-cal-link="9pmskincare/120min"
               data-cal-namespace="120min"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-              className="flex-1 flex items-center justify-center bg-gold-dark text-white px-4 py-4 md:py-5 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center text-sm sm:text-base md:text-lg"
+              className="hidden md:flex flex-col items-center justify-center gap-1 bg-gold-dark text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center h-full"
             >
-              Đặt lịch Chuyên sâu
+              <span className="text-sm md:text-base whitespace-nowrap">Đặt lịch</span>
+              <span className="text-sm md:text-base whitespace-nowrap">Chuyên sâu</span>
             </button>
-          </div>
 
-          {/* Mobile Direct Links */}
-          <div className="flex md:hidden flex-col gap-3 w-full">
+            {/* Mobile Direct Links */}
             <a
               href="https://cal.com/9pmskincare/basic"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center bg-[#1F1A17] text-white px-4 py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center text-sm sm:text-base"
+              className="flex md:hidden flex-col items-center justify-center gap-1 bg-[#1F1A17] text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-black transition-colors shadow-md text-center h-full"
             >
-              Đặt lịch Cơ bản
+              <span className="text-sm md:text-base whitespace-nowrap">Đặt lịch</span>
+              <span className="text-sm md:text-base whitespace-nowrap">Cơ bản</span>
             </a>
             <a
               href="https://cal.com/9pmskincare/120min"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center bg-gold-dark text-white px-4 py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center text-sm sm:text-base"
+              className="flex md:hidden flex-col items-center justify-center gap-1 bg-gold-dark text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold transition-colors shadow-md text-center h-full"
             >
-              Đặt lịch Chuyên sâu
+              <span className="text-sm md:text-base whitespace-nowrap">Đặt lịch</span>
+              <span className="text-sm md:text-base whitespace-nowrap">Chuyên sâu</span>
             </a>
+          </div>
+
+          {/* Hàng 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 w-full mt-2">
+            <button
+              onClick={() => setShowPopup(true)}
+              className="flex flex-col items-center justify-center gap-1 bg-transparent border-2 border-gold-dark text-gold-dark px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark hover:text-white transition-colors text-center h-full"
+            >
+              <span className="text-sm md:text-base">Các dịch vụ tại 9PM</span>
+            </button>
+            <button
+              onClick={() => { setCurrentTab('doctor'); window.scrollTo(0, 0); }}
+              className="flex flex-col items-center justify-center gap-1 bg-transparent border-2 border-[#1F1A17] text-[#1F1A17] px-3 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#1F1A17] hover:text-white transition-colors text-center h-full"
+            >
+              <span className="text-[10px] md:text-xs opacity-90">Thông tin về</span>
+              <span className="text-sm md:text-base">Chuyên gia phụ trách</span>
+            </button>
           </div>
         </div>
 
@@ -147,21 +151,24 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
           "9 p.m. là 9 giờ tối - thời khắc ta dành cho riêng ta những phút chữa lành sau một ngày dài với nhiều trách nhiệm. Các liệu pháp tại 9 p.m. SkinCare Medspa cũng vậy, như một &quot;personal magic&quot; - phép màu dành cho riêng bạn"
         </p>
 
-        <a 
-          href="https://share.google/65bPVQf5EgZLYkwWS"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-0.5 sm:mb-1 md:mb-2 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
-        >
-          Số 46, ngõ 196 Nguyễn Sơn, Bồ Đề
-        </a>
-        
-        <button
-          onClick={() => setShowPopup(true)}
-          className="text-gold-dark text-xs sm:text-sm md:text-base font-bold underline underline-offset-4 decoration-gold/50 hover:decoration-gold transition-colors leading-relaxed px-2 mb-4"
-        >
-          Xem trước các dịch vụ của 9 p.m Skincare
-        </button>
+        <div className="flex flex-col items-center">
+          <a 
+            href="https://share.google/65bPVQf5EgZLYkwWS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#1F1A17] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest mb-0.5 sm:mb-1 hover:text-gold transition-colors inline-block px-2 sm:px-4 leading-relaxed"
+          >
+            Số 46, ngõ 196 Nguyễn Sơn, Bồ Đề
+          </a>
+          <a 
+            href="https://share.google/65bPVQf5EgZLYkwWS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] sm:text-xs text-[#4D4741] italic hover:text-gold transition-colors"
+          >
+            (Click để chỉ đường trên Google Map)
+          </a>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -178,7 +185,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative bg-[#FDFCFB] border border-gold/30 p-6 md:p-8 rounded-sm shadow-xl w-full max-w-md"
+              className="relative bg-[#FDFCFB] border border-gold/30 p-6 md:p-8 rounded-sm shadow-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto"
             >
               <button 
                 onClick={() => setShowPopup(false)}
@@ -187,36 +194,75 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
                 ✕
               </button>
               <h3 className="text-xl md:text-2xl font-serif font-bold text-[#1F1A17] mb-6 text-center">
-                Xin nhập mã giới thiệu
+                Các dịch vụ hiện có tại 9PM SkinCare
               </h3>
-              <form onSubmit={handleCodeSubmit} className="flex flex-col gap-4">
+              
+              <div className="space-y-6 text-left text-sm md:text-base text-[#4D4741]">
                 <div>
-                  <input
-                    type="text"
-                    value={code}
-                    onChange={(e) => {
-                      setCode(e.target.value);
-                      setError(false);
-                    }}
-                    placeholder="Nhập mã..."
-                    className={`w-full px-4 py-3 bg-white border ${error ? 'border-red-500' : 'border-gold/30'} rounded-sm focus:outline-none focus:border-gold transition-colors text-center font-bold tracking-widest text-[#1F1A17]`}
-                    autoFocus
-                  />
-                  {error && (
-                    <p className="text-red-500 text-sm mt-2 text-center">Mã không chính xác, vui lòng thử lại!</p>
-                  )}
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">LASER TÁI TẠO & PHỤC HỒI</h4>
+                  <p>Phù hợp cho trẻ hoá, trị sẹo, tổn thương nổi trên da</p>
+                  <p>Công nghệ sử dụng: <span className="font-semibold">Laser Fractional CO2</span></p>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gold text-white font-bold uppercase tracking-widest py-3 rounded-sm hover:bg-gold-dark transition-colors"
-                >
-                  Xác nhận
-                </button>
-              </form>
+                
+                <div>
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">DƯỠNG CHẤT NÂNG CẤP DA</h4>
+                  <p>Skin Booster với Cấp Độ Cơ Bản Tuỳ Chỉnh và Cao Cấp (R)</p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">CẢI THIỆN NỀN DA CÔNG NGHỆ CAO</h4>
+                  <p>Phù hợp cho: Kháng Viêm Trị Mụn; Phục Hồi Cấu Trúc & Giảm Đỏ</p>
+                  <p>Công nghệ sử dụng: <span className="font-semibold">DPL (công nghệ ánh sáng xung động cao cấp)</span></p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">CHĂM SÓC DA & TRỊ MỤN</h4>
+                  <p>Công nghệ sử dụng: <span className="font-semibold">AquaPeel, Laser Fractional CO2 và DPL tuỳ gói</span></p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">Triệt Lông Công Nghệ Cao</h4>
+                  <p>Từng vùng hoặc tay, chân</p>
+                  <p>Công nghệ sử dụng: <span className="font-semibold">DPL lạnh</span></p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[#1F1A17] uppercase tracking-wider mb-1">THƯ GIÃN CƠ VÀ TRẺ HOÁ</h4>
+                  <p>Liên hệ để được tư vấn chi tiết</p>
+                </div>
+
+                <div className="pt-4 border-t border-gold/20 italic text-xs md:text-sm text-center">
+                  <p className="mb-1">* Lưu ý: Thông tin có thể cập nhật mới tại thời điểm tư vấn.</p>
+                  <p>Xin liên hệ trực tiếp để 9PM tư vấn cụ thể và chi tiết nhất.</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 md:gap-4 w-full pt-2">
+                  <a
+                    href="tel:0374558669"
+                    className="flex flex-col items-center justify-center gap-1 bg-gold text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-dark transition-colors shadow-md text-center h-full"
+                  >
+                    <span className="text-[10px] md:text-xs opacity-90">Hotline Gọi</span>
+                    <span className="text-sm md:text-base">0374 558 669</span>
+                  </a>
+                  
+                  <a
+                    href="https://zalo.me/0374558669"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-1 bg-[#0068FF] text-white px-2 py-3 md:py-4 font-bold uppercase tracking-widest rounded-sm hover:bg-[#0054cc] transition-colors shadow-md text-center h-full"
+                  >
+                    <span className="text-[10px] md:text-xs opacity-90">Nhắn tin Zalo</span>
+                    <span className="text-sm md:text-base">0374 558 669</span>
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+      <div className="absolute bottom-2 text-center w-full text-[10px] sm:text-xs text-[#4D4741] px-4">
+        Copyright &copy; 9 p.m. SkinCare Medspa 2026 Mọi quyền đều được bảo vệ
+      </div>
     </section>
   );
 }
