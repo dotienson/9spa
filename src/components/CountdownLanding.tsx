@@ -13,7 +13,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
   const [showPopup, setShowPopup] = useState(false);
   
   useEffect(() => {
-    const targetDate = new Date('2026-08-08T08:00:00').getTime();
+    const targetDate = new Date('2026-08-18T23:59:59').getTime();
     
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -21,6 +21,7 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
 
       if (distance < 0) {
         clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -50,12 +51,14 @@ export default function CountdownLanding({ setCurrentTab }: { setCurrentTab: (ta
       >
         <Logo className="h-24 md:h-48 mb-6 md:mb-10" />
 
-        <h1 className="text-lg sm:text-xl md:text-3xl font-serif font-bold text-[#1F1A17] mb-4 md:mb-6 leading-relaxed max-w-2xl mx-auto px-2 md:px-4">
-          Cuối ngõ nhỏ yên bình, dưới tán hoa giấy, <br className="hidden md:block" />
-          có một medspa nhỏ sắp khai trương
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#1F1A17] mb-3 md:mb-4 leading-relaxed max-w-3xl mx-auto px-2 md:px-4">
+          Chương trình Mở hàng Đón khách
         </h1>
-        <p className="text-gold-dark text-lg sm:text-xl md:text-4xl font-bold tracking-widest mb-8 md:mb-12 uppercase px-2">
-          8:00 ngày 08/08/2026
+        <p className="text-gold-dark text-lg sm:text-xl md:text-3xl font-bold tracking-wider mb-2 md:mb-3 uppercase px-2">
+          Tặng ngay voucher promo 10%
+        </p>
+        <p className="text-[#4D4741] text-xs sm:text-sm md:text-base font-semibold tracking-wider mb-8 md:mb-12 uppercase px-2">
+          (Áp dụng kéo dài 10 ngày từ 08/08 đến 18/08/2026)
         </p>
 
         {/* Countdown */}
