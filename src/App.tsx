@@ -3,6 +3,7 @@ import TopNav from './components/TopNav';
 import HomeLanding from './components/HomeLanding';
 import DoctorInfo from './components/DoctorInfo';
 import ServicesModal from './components/ServicesModal';
+import SupportChatWidget from './components/SupportChatWidget';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<'home' | 'doctor'>('home');
@@ -40,6 +41,8 @@ export default function App() {
         isOpen={isServicesOpen}
         onClose={() => setIsServicesOpen(false)}
       />
+
+      {!isServicesOpen && <SupportChatWidget />}
     </div>
   );
 }

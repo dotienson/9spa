@@ -124,8 +124,80 @@ body {
   }
 }
 
+/* Smooth horizontal marquee for Medspa advantage cards (compositor-only GPU transform) */
+.advantage-marquee-viewport {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.advantage-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: advantageMarquee 22s linear infinite;
+}
+
+.advantage-marquee-viewport:hover .advantage-marquee-track,
+.advantage-marquee-viewport:focus-within .advantage-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes advantageMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Subtle luxury champagne light sheen across Hero Headline */
+.hero-title-sheen {
+  background-image: linear-gradient(
+    112deg,
+    #1D1D1F 0%,
+    #1D1D1F 38%,
+    #9A7136 50%,
+    #1D1D1F 62%,
+    #1D1D1F 100%
+  );
+  background-size: 240% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heroTitleSheen 6.5s ease-in-out infinite;
+}
+
+@keyframes heroTitleSheen {
+  0%,
+  18% {
+    background-position: 100% 0;
+  }
+  58%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .aurora-blob {
+    animation: none;
+  }
+  .advantage-marquee-viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .advantage-marquee-track {
+    animation: none;
+  }
+  .advantage-marquee-duplicate {
+    display: none;
+  }
+  .hero-title-sheen {
+    background-image: none;
+    color: #1D1D1F;
     animation: none;
   }
 }
