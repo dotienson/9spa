@@ -135,11 +135,11 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 className="group flex items-center justify-between gap-4 bg-white/85 hover:bg-white backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-[0_6px_24px_-12px_rgba(15,23,42,0.08)] hover:shadow-[0_12px_30px_-12px_rgba(15,23,42,0.14)] ring-1 ring-black/[0.06] transition-all duration-200 hover:-translate-y-0.5 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/30"
               >
                 <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 rounded-xl bg-[#1D1D1F]/[0.06] text-[#1D1D1F] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#8C6730]/10 text-[#8C6730] flex items-center justify-center shrink-0">
                     <Stethoscope className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="block text-xs font-medium text-[#6E6E73]">
+                    <span className="block text-xs font-medium text-[#8C6730]">
                       Thông tin về
                     </span>
                     <span className="block text-[15px] sm:text-base font-semibold text-[#1D1D1F] mt-0.5 truncate">
@@ -151,14 +151,14 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
               </button>
             </div>
 
-            {/* Bottom Row (4 Balanced Contact & Booking Actions) */}
+            {/* Bottom Row (4 Prominent & Balanced Contact & Booking Actions) */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
               <a
                 href="tel:0374558669"
-                className="group flex flex-col items-center justify-center bg-white/85 hover:bg-white backdrop-blur-md shadow-[0_6px_20px_-10px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.06] text-[#1D1D1F] px-3 py-4 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/30"
+                className="group flex flex-col items-center justify-center bg-[#0C7F54] hover:bg-[#096B46] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(12,127,84,0.48)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0C7F54]/40"
               >
-                <Phone className="w-4 h-4 text-[#6E6E73] group-hover:text-[#1D1D1F] mb-2 transition-colors" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] text-[#1D1D1F] whitespace-nowrap">
+                <Phone className="w-4 h-4 text-white/90 mb-2" />
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] text-white whitespace-nowrap">
                   GỌI HOTLINE
                 </span>
               </a>
@@ -167,10 +167,10 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 href="https://zalo.me/0374558669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center justify-center bg-white/85 hover:bg-[#F4F8FF] backdrop-blur-md shadow-[0_6px_20px_-10px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.06] hover:ring-[#0068FF]/25 text-[#1D1D1F] px-3 py-4 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
+                className="group flex flex-col items-center justify-center bg-[#0068FF] hover:bg-[#0055D4] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(0,104,255,0.48)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
               >
-                <MessageCircle className="w-4 h-4 text-[#0068FF] mb-2" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] text-[#0068FF] whitespace-nowrap">
+                <MessageCircle className="w-4 h-4 text-white/90 mb-2" />
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] text-white whitespace-nowrap">
                   NHẮN QUA ZALO
                 </span>
               </a>
@@ -181,13 +181,13 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 data-cal-link="9pmskincare/basic"
                 data-cal-namespace="basic"
                 data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="hidden md:flex flex-col items-center justify-center bg-[#1D1D1F] hover:bg-black text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(29,29,31,0.4)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/40"
+                className="hidden md:flex flex-col items-center justify-center bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#6B4B1F] ring-1 ring-[#8C6730]/30 px-3 py-4 rounded-2xl shadow-[0_8px_22px_-10px_rgba(140,103,48,0.22)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
               >
-                <Calendar className="w-4 h-4 text-white/75 mb-1.5" />
-                <span className="text-xs font-medium text-white/75 whitespace-nowrap">
+                <Calendar className="w-4 h-4 text-[#8C6730] mb-1.5" />
+                <span className="text-xs font-medium text-[#8C6730] whitespace-nowrap">
                   Đặt lịch
                 </span>
-                <span className="text-[15px] font-semibold tracking-[-0.01em] whitespace-nowrap mt-0.5">
+                <span className="text-[15px] font-semibold tracking-[-0.01em] text-[#5C3F17] whitespace-nowrap mt-0.5">
                   Cơ bản
                 </span>
               </button>
@@ -197,10 +197,10 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 data-cal-link="9pmskincare/120min"
                 data-cal-namespace="120min"
                 data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="hidden md:flex flex-col items-center justify-center bg-[#8C6730] hover:bg-[#725224] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(140,103,48,0.38)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
+                className="hidden md:flex flex-col items-center justify-center bg-[#966D31] hover:bg-[#7E5924] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(150,109,49,0.42)] transition-all duration-200 hover:-translate-y-0.5 text-center min-h-[84px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
               >
-                <CalendarClock className="w-4 h-4 text-white/80 mb-1.5" />
-                <span className="text-xs font-medium text-white/80 whitespace-nowrap">
+                <CalendarClock className="w-4 h-4 text-white/85 mb-1.5" />
+                <span className="text-xs font-medium text-white/85 whitespace-nowrap">
                   Đặt lịch
                 </span>
                 <span className="text-[15px] font-semibold tracking-[-0.01em] whitespace-nowrap mt-0.5">
@@ -213,13 +213,13 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 href="https://cal.com/9pmskincare/basic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex md:hidden flex-col items-center justify-center bg-[#1D1D1F] hover:bg-black text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(29,29,31,0.35)] transition-colors duration-150 text-center min-h-[84px]"
+                className="flex md:hidden flex-col items-center justify-center bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#6B4B1F] ring-1 ring-[#8C6730]/30 px-3 py-4 rounded-2xl shadow-[0_8px_20px_-10px_rgba(140,103,48,0.2)] transition-colors duration-150 text-center min-h-[84px]"
               >
-                <Calendar className="w-4 h-4 text-white/75 mb-1.5" />
-                <span className="text-[11px] font-medium text-white/75 whitespace-nowrap">
+                <Calendar className="w-4 h-4 text-[#8C6730] mb-1.5" />
+                <span className="text-[11px] font-medium text-[#8C6730] whitespace-nowrap">
                   Đặt lịch
                 </span>
-                <span className="text-sm font-semibold whitespace-nowrap mt-0.5">
+                <span className="text-sm font-semibold text-[#5C3F17] whitespace-nowrap mt-0.5">
                   Cơ bản
                 </span>
               </a>
@@ -228,10 +228,10 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 href="https://cal.com/9pmskincare/120min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex md:hidden flex-col items-center justify-center bg-[#8C6730] hover:bg-[#725224] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(140,103,48,0.35)] transition-colors duration-150 text-center min-h-[84px]"
+                className="flex md:hidden flex-col items-center justify-center bg-[#966D31] hover:bg-[#7E5924] text-white px-3 py-4 rounded-2xl shadow-[0_10px_24px_-10px_rgba(150,109,49,0.38)] transition-colors duration-150 text-center min-h-[84px]"
               >
-                <CalendarClock className="w-4 h-4 text-white/80 mb-1.5" />
-                <span className="text-[11px] font-medium text-white/80 whitespace-nowrap">
+                <CalendarClock className="w-4 h-4 text-white/85 mb-1.5" />
+                <span className="text-[11px] font-medium text-white/85 whitespace-nowrap">
                   Đặt lịch
                 </span>
                 <span className="text-sm font-semibold whitespace-nowrap mt-0.5">

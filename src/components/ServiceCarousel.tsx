@@ -96,7 +96,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
             Liệu trình tại 9 p.m. SkinCare
           </p>
           <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold tracking-[-0.025em] text-[#1D1D1F] leading-tight">
-            Khám phá 6 nhóm dịch vụ chuyên sâu
+            Các nhóm dịch vụ chuyên sâu
           </h2>
         </div>
 
@@ -228,7 +228,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${
                     isActive
-                      ? 'w-7 bg-[#1D1D1F]'
+                      ? 'w-7 bg-[#8C6730]'
                       : 'w-1.5 bg-black/20 hover:bg-black/40'
                   }`}
                 />

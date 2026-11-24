@@ -72,7 +72,7 @@ export default function TopNav({ currentTab, setCurrentTab, onOpenServices }: To
             data-cal-link="9pmskincare/basic"
             data-cal-namespace="basic"
             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            className="hidden md:inline-flex items-center justify-center px-3.5 py-2 text-xs font-semibold text-white bg-[#1D1D1F] hover:bg-black rounded-xl shadow-[0_6px_16px_-6px_rgba(29,29,31,0.35)] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/40"
+            className="hidden md:inline-flex items-center justify-center px-3.5 py-2 text-xs font-semibold text-[#6B4B1F] bg-[#F6EFE4] hover:bg-[#EDE0CC] ring-1 ring-[#8C6730]/25 rounded-xl transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
           >
             Đặt lịch cơ bản
           </button>
@@ -81,7 +81,7 @@ export default function TopNav({ currentTab, setCurrentTab, onOpenServices }: To
             data-cal-link="9pmskincare/120min"
             data-cal-namespace="120min"
             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            className="hidden md:inline-flex items-center justify-center px-3.5 py-2 text-xs font-semibold text-white bg-[#8C6730] hover:bg-[#725224] rounded-xl shadow-[0_6px_16px_-6px_rgba(140,103,48,0.35)] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
+            className="hidden md:inline-flex items-center justify-center px-3.5 py-2 text-xs font-semibold text-white bg-[#966D31] hover:bg-[#7E5924] rounded-xl shadow-[0_6px_16px_-6px_rgba(150,109,49,0.38)] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
           >
             Đặt lịch chuyên sâu
           </button>
@@ -91,7 +91,7 @@ export default function TopNav({ currentTab, setCurrentTab, onOpenServices }: To
             href="https://cal.com/9pmskincare/basic"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex md:hidden items-center justify-center px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-semibold text-white bg-[#1D1D1F] hover:bg-black rounded-xl transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex md:hidden items-center justify-center px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-semibold text-[#6B4B1F] bg-[#F6EFE4] hover:bg-[#EDE0CC] ring-1 ring-[#8C6730]/25 rounded-xl transition-colors whitespace-nowrap shrink-0"
           >
             Đặt lịch cơ bản
           </a>
@@ -99,7 +99,7 @@ export default function TopNav({ currentTab, setCurrentTab, onOpenServices }: To
             href="https://cal.com/9pmskincare/120min"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex md:hidden items-center justify-center px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-semibold text-white bg-[#8C6730] hover:bg-[#725224] rounded-xl transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex md:hidden items-center justify-center px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-semibold text-white bg-[#966D31] hover:bg-[#7E5924] rounded-xl shadow-[0_4px_12px_-4px_rgba(150,109,49,0.35)] transition-colors whitespace-nowrap shrink-0"
           >
             Đặt lịch chuyên sâu
           </a>

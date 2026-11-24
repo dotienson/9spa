@@ -167,7 +167,7 @@ export default function DoctorInfo({
               </a>
               <a
                 href="tel:0374558669"
-                className="flex items-center justify-center gap-2 bg-[#1D1D1F] hover:bg-black text-white px-6 py-3.5 rounded-2xl text-sm sm:text-[15px] font-semibold shadow-[0_10px_24px_-10px_rgba(29,29,31,0.4)] transition-all duration-200 hover:-translate-y-0.5 min-h-[54px]"
+                className="flex items-center justify-center gap-2 bg-[#0C7F54] hover:bg-[#096B46] text-white px-6 py-3.5 rounded-2xl text-sm sm:text-[15px] font-semibold shadow-[0_10px_24px_-10px_rgba(12,127,84,0.45)] transition-all duration-200 hover:-translate-y-0.5 min-h-[54px]"
               >
                 <Phone className="w-4 h-4 shrink-0" />
                 <span>Gọi Hotline</span>
