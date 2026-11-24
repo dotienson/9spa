@@ -110,8 +110,8 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
         </button>
       </div>
 
-      {/* Elevated Frosted-White Argon Showcase Card */}
-      <div className="relative bg-white/85 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] shadow-[0_16px_48px_-16px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.05] overflow-hidden">
+      {/* Flat Frosted-White Showcase Card */}
+      <div className="relative bg-white/78 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] border border-black/[0.07] overflow-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current.id}
@@ -153,7 +153,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
             </div>
 
             {/* Clean Editorial Detail Panel */}
-            <div className="md:col-span-6 p-6 sm:p-8 md:p-9 flex flex-col justify-between text-left bg-white/90">
+            <div className="md:col-span-6 p-6 sm:p-8 md:p-9 flex flex-col justify-between text-left bg-white/65">
               <div>
                 <div className="flex items-center gap-2 text-xs font-medium text-[#6E6E73] mb-3">
                   <span className="tabular-nums font-semibold text-[#8C6730]">
@@ -209,7 +209,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
       {/* Minimal Slide Indicator & Prev/Next Bar */}
       <div className="mt-4 flex items-center justify-between gap-3">
         <div
-          className="flex items-center gap-1.5 bg-white px-3.5 h-10 rounded-full ring-1 ring-black/[0.06]"
+          className="flex items-center gap-1.5 bg-white/78 backdrop-blur-md px-3.5 h-10 rounded-full border border-black/[0.07]"
           role="tablist"
           aria-label="Chọn dịch vụ"
         >
@@ -242,7 +242,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
             type="button"
             onClick={handlePrev}
             aria-label="Dịch vụ trước"
-            className="w-10 h-10 rounded-full bg-white hover:bg-[#ECEEF2] ring-1 ring-black/[0.06] text-[#1D1D1F] flex items-center justify-center transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/30"
+            className="w-10 h-10 rounded-full bg-white/78 hover:bg-white backdrop-blur-md border border-black/[0.07] text-[#1D1D1F] flex items-center justify-center transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -250,7 +250,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
             type="button"
             onClick={handleNext}
             aria-label="Dịch vụ tiếp theo"
-            className="w-10 h-10 rounded-full bg-white hover:bg-[#ECEEF2] ring-1 ring-black/[0.06] text-[#1D1D1F] flex items-center justify-center transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F]/30"
+            className="w-10 h-10 rounded-full bg-white/78 hover:bg-white backdrop-blur-md border border-black/[0.07] text-[#1D1D1F] flex items-center justify-center transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

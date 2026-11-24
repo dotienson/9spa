@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TopNav from './components/TopNav';
 import HomeLanding from './components/HomeLanding';
 import DoctorInfo from './components/DoctorInfo';
@@ -8,6 +8,19 @@ import SupportChatWidget from './components/SupportChatWidget';
 export default function App() {
   const [currentTab, setCurrentTab] = useState<'home' | 'doctor'>('home');
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  useEffect(() => {
+    const syncMinaHash = () => {
+      if (window.location.hash.toLowerCase() === '#mina') {
+        setIsServicesOpen(false);
+        setCurrentTab('home');
+      }
+    };
+
+    syncMinaHash();
+    window.addEventListener('hashchange', syncMinaHash);
+    return () => window.removeEventListener('hashchange', syncMinaHash);
+  }, []);
 
   return (
     <div className="min-h-[100dvh] font-sans text-[#1D1D1F] selection:bg-[#8C6730]/20 selection:text-[#1D1D1F] flex flex-col relative">

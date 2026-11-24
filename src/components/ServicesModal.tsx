@@ -61,7 +61,7 @@ export default function ServicesModal({ isOpen, onClose }: ServicesModalProps) {
               scale: prefersReducedMotion ? 1 : 0.99,
             }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full sm:max-w-2xl max-h-[92dvh] sm:max-h-[86dvh] bg-[#FAF9F6] rounded-t-[28px] sm:rounded-[28px] ring-1 ring-black/[0.08] shadow-[0_24px_64px_-16px_rgba(15,23,42,0.28)] flex flex-col overflow-hidden"
+            className="relative w-full sm:max-w-2xl max-h-[92dvh] sm:max-h-[86dvh] bg-[#FAF9F6] rounded-t-[24px] sm:rounded-[24px] border border-black/[0.08] shadow-[0_18px_48px_-16px_rgba(15,23,42,0.22)] flex flex-col overflow-hidden"
           >
             {/* Mobile Sheet Grab Indicator */}
             <div className="sm:hidden flex justify-center pt-2.5 pb-1 bg-white shrink-0">
@@ -97,7 +97,7 @@ export default function ServicesModal({ isOpen, onClose }: ServicesModalProps) {
               {SERVICES.map((service) => (
                 <article
                   key={service.id}
-                  className="bg-white rounded-2xl p-3.5 sm:p-5 ring-1 ring-black/[0.05] shadow-[0_2px_10px_-4px_rgba(15,23,42,0.06)] text-left"
+                  className="bg-white rounded-2xl p-3.5 sm:p-5 border border-black/[0.07] text-left"
                 >
                   {/* Visual Anchor + Numbered Title Row */}
                   <div className="flex items-center gap-3 sm:gap-3.5">
@@ -150,14 +150,14 @@ export default function ServicesModal({ isOpen, onClose }: ServicesModalProps) {
               </div>
             </div>
 
-            {/* Sticky Thumb-Zone Footer Actions (Prominent Emerald Hotline & Zalo Blue) */}
-            <div className="px-4 sm:px-7 pt-3 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:py-4 bg-white/95 backdrop-blur-md border-t border-black/[0.06] grid grid-cols-2 gap-2.5 sm:gap-3 shrink-0">
+            {/* Sticky Thumb-Zone Footer Actions (Flat Refined Emerald Hotline & Zalo Blue) */}
+            <div className="px-4 sm:px-7 pt-3 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:py-3.5 bg-white/95 backdrop-blur-md border-t border-black/[0.06] grid grid-cols-2 gap-2.5 sm:gap-3 shrink-0">
               <a
                 href="tel:0374558669"
-                className="flex items-center justify-center gap-2 bg-[#0C7F54] hover:bg-[#096B46] text-white px-3 py-3 rounded-2xl shadow-[0_8px_20px_-8px_rgba(12,127,84,0.45)] transition-colors duration-150 text-center min-h-[48px] sm:min-h-[52px]"
+                className="flex items-center justify-center gap-2 bg-[#0C7F54] hover:bg-[#096B46] text-white px-3 py-2.5 rounded-xl transition-colors duration-150 text-center min-h-[44px] sm:min-h-[46px]"
               >
-                <Phone className="w-4 h-4 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] whitespace-nowrap">
+                <Phone className="w-3.5 h-3.5 shrink-0" />
+                <span className="text-xs sm:text-[13px] font-semibold tracking-[0.015em] whitespace-nowrap">
                   GỌI HOTLINE
                 </span>
               </a>
@@ -165,10 +165,10 @@ export default function ServicesModal({ isOpen, onClose }: ServicesModalProps) {
                 href="https://zalo.me/0374558669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#0068FF] hover:bg-[#0055D4] text-white px-3 py-3 rounded-2xl shadow-[0_8px_20px_-8px_rgba(0,104,255,0.45)] transition-colors duration-150 text-center min-h-[48px] sm:min-h-[52px]"
+                className="flex items-center justify-center gap-2 bg-[#0068FF] hover:bg-[#0055D4] text-white px-3 py-2.5 rounded-xl transition-colors duration-150 text-center min-h-[44px] sm:min-h-[46px]"
               >
-                <MessageCircle className="w-4 h-4 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.02em] whitespace-nowrap">
+                <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                <span className="text-xs sm:text-[13px] font-semibold tracking-[0.015em] whitespace-nowrap">
                   NHẮN QUA ZALO
                 </span>
               </a>

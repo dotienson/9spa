@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, MessageCircle, Phone } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function DoctorInfo({
   setCurrentTab,
@@ -29,53 +30,58 @@ export default function DoctorInfo({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
           {/* Desktop Sticky Portrait Card (Hidden on mobile per user preference) */}
           <div className="hidden md:block md:col-span-5 md:sticky md:top-20">
-            <div className="bg-white/85 backdrop-blur-xl p-2.5 rounded-[28px] shadow-[0_20px_50px_-18px_rgba(15,23,42,0.12)] ring-1 ring-black/[0.05]">
-              <div className="aspect-[3/4] w-full rounded-[20px] overflow-hidden bg-[#F4F5F7]">
-                {!imgError ? (
-                  <img
-                    src="/doctor.jpg"
-                    alt="BSCK1. Trần Thuỳ Dương — Giám đốc Chuyên môn 9 p.m. SkinCare"
-                    referrerPolicy="no-referrer"
-                    onError={() => setImgError(true)}
-                    className="w-full h-full object-cover object-[48%_14%]"
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
-                    <span className="text-sm font-medium text-[#8C6730] mb-2">
-                      Giám đốc Chuyên môn
-                    </span>
-                    <span className="text-xl font-semibold text-[#1D1D1F]">
-                      BSCK1. Trần Thuỳ Dương
-                    </span>
-                  </div>
-                )}
+            <ScrollReveal>
+              <div className="bg-white/78 backdrop-blur-xl p-2 rounded-[24px] border border-black/[0.07]">
+                <div className="aspect-[3/4] w-full rounded-[16px] overflow-hidden bg-[#F4F5F7]">
+                  {!imgError ? (
+                    <img
+                      src="/doctor.jpg"
+                      alt="BSCK1. Trần Thuỳ Dương — Giám đốc Chuyên môn 9 p.m. SkinCare"
+                      referrerPolicy="no-referrer"
+                      onError={() => setImgError(true)}
+                      className="w-full h-full object-cover object-[48%_14%]"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
+                      <span className="text-sm font-medium text-[#8C6730] mb-2">
+                        Giám đốc Chuyên môn
+                      </span>
+                      <span className="text-xl font-semibold text-[#1D1D1F]">
+                        BSCK1. Trần Thuỳ Dương
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
 
           {/* Credentials Card Column */}
-          <div className="md:col-span-7 space-y-6">
+          <div className="md:col-span-7 space-y-5">
             {/* Identity Header */}
-            <div className="bg-white/85 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 shadow-[0_12px_36px_-14px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.05] text-center md:text-left">
-              <p className="text-sm sm:text-base font-semibold text-[#8C6730] mb-3.5 md:mb-4">
-                Giám đốc Chuyên môn
-              </p>
-              <h1 className="text-[19px] min-[375px]:text-[22px] sm:text-3xl md:text-[36px] font-semibold tracking-[-0.03em] text-[#1D1D1F] mb-4 leading-tight whitespace-nowrap">
-                BSCK1. TRẦN THUỲ DƯƠNG
-              </h1>
-              <div className="text-xs sm:text-sm md:text-[15px] font-medium text-[#8C6730] space-y-1.5">
-                <p>Bác sĩ chuyên khoa cấp I - Da liễu</p>
-                <p>
-                  <span className="md:hidden">Cố vấn chuyên môn 9 p.m. SkinCare</span>
-                  <span className="hidden md:inline">
-                    Cố vấn chuyên môn hệ thống 9 p.m. SkinCare Medspa
-                  </span>
+            <ScrollReveal>
+              <div className="bg-white/78 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] p-6 sm:p-8 border border-black/[0.07] text-center md:text-left">
+                <p className="text-sm sm:text-base font-semibold text-[#8C6730] mb-3.5 md:mb-4">
+                  Giám đốc Chuyên môn
                 </p>
+                <h1 className="text-[19px] min-[375px]:text-[22px] sm:text-3xl md:text-[36px] font-semibold tracking-[-0.03em] text-[#1D1D1F] mb-4 leading-tight whitespace-nowrap">
+                  BSCK1. TRẦN THUỲ DƯƠNG
+                </h1>
+                <div className="text-xs sm:text-sm md:text-[15px] font-medium text-[#8C6730] space-y-1.5">
+                  <p>Bác sĩ chuyên khoa cấp I - Da liễu</p>
+                  <p>
+                    <span className="md:hidden">Cố vấn chuyên môn 9 p.m. SkinCare</span>
+                    <span className="hidden md:inline">
+                      Cố vấn chuyên môn hệ thống 9 p.m. SkinCare Medspa
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
-            {/* 4 Credential Sections in Clean Frosted Argon Surface */}
-            <div className="bg-white/85 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] px-6 sm:px-8 py-2 shadow-[0_12px_36px_-14px_rgba(15,23,42,0.07)] ring-1 ring-black/[0.05] divide-y divide-black/[0.06]">
+            {/* 4 Credential Sections in Flat Frosted Surface */}
+            <ScrollReveal delay={1}>
+              <div className="bg-white/78 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] px-6 sm:px-8 py-2 border border-black/[0.07] divide-y divide-black/[0.06]">
               <div className="py-5 sm:py-6">
                 <div className="flex items-baseline gap-3 mb-2.5">
                   <span className="text-xs font-semibold text-[#8C6730] tabular-nums shrink-0">
@@ -152,27 +158,28 @@ export default function DoctorInfo({
                   09 năm kinh nghiệm trực tiếp điều trị và chăm sóc da liễu thẩm mỹ, đào tạo chuyển giao kĩ thuật cho các đơn vị lâm sàng, trực tiếp và gián tiếp mang lại làn da khỏe mạnh cho hàng ngàn khách hàng.
                 </p>
               </div>
-            </div>
+              </div>
+            </ScrollReveal>
 
             {/* Direct Contact Actions */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-1">
+            <ScrollReveal delay={2} className="grid grid-cols-2 gap-3 pt-1">
               <a
                 href="https://zalo.me/0374558669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#0068FF] hover:bg-[#0055D4] text-white px-6 py-3.5 rounded-2xl text-sm sm:text-[15px] font-semibold shadow-[0_10px_24px_-10px_rgba(0,104,255,0.45)] transition-all duration-200 hover:-translate-y-0.5 min-h-[54px]"
+                className="flex items-center justify-center gap-2 bg-[#0068FF] hover:bg-[#0055D4] text-white px-4 py-2.5 rounded-xl text-[13px] sm:text-sm font-semibold transition-colors duration-150 min-h-[46px]"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>Nhắn tin Zalo</span>
               </a>
               <a
                 href="tel:0374558669"
-                className="flex items-center justify-center gap-2 bg-[#0C7F54] hover:bg-[#096B46] text-white px-6 py-3.5 rounded-2xl text-sm sm:text-[15px] font-semibold shadow-[0_10px_24px_-10px_rgba(12,127,84,0.45)] transition-all duration-200 hover:-translate-y-0.5 min-h-[54px]"
+                className="flex items-center justify-center gap-2 bg-[#0C7F54] hover:bg-[#096B46] text-white px-4 py-2.5 rounded-xl text-[13px] sm:text-sm font-semibold transition-colors duration-150 min-h-[46px]"
               >
                 <Phone className="w-4 h-4 shrink-0" />
                 <span>Gọi Hotline</span>
               </a>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

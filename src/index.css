@@ -180,7 +180,314 @@ body {
   }
 }
 
+/* Luminous flat champagne-aurora 1.5px border sweep for Mina's consultation box */
+.chat-aura-frame {
+  position: relative;
+  padding: 1.5px;
+  border-radius: 21.5px;
+  overflow: hidden;
+  background: rgba(140, 103, 48, 0.14);
+  transition:
+    scale 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    translate 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    margin 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chat-aura-frame:hover {
+    scale: 1.01;
+    translate: 0 -2px;
+    box-shadow: 0 18px 42px -24px rgba(140, 103, 48, 0.28);
+  }
+}
+
+@media (min-width: 640px) {
+  .chat-aura-frame {
+    border-radius: 25.5px;
+  }
+}
+
+.chat-aura-frame::before {
+  content: '';
+  position: absolute;
+  inset: -70%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(198, 168, 118, 0.18) 55deg,
+    rgba(150, 109, 49, 0.72) 95deg,
+    rgba(168, 212, 240, 0.65) 130deg,
+    rgba(198, 168, 118, 0.18) 175deg,
+    transparent 230deg,
+    transparent 360deg
+  );
+  will-change: transform;
+  animation: chatAuraSpin 7.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes chatAuraSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gentle light sheen sweep on the primary "Bắt đầu tư vấn" CTA */
+.btn-sheen-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sheen-sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translate3d(-160%, 0, 0);
+  will-change: transform;
+  animation: btnSheenGlide 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btnSheenGlide {
+  0%,
+  55% {
+    transform: translate3d(-160%, 0, 0);
+  }
+  100% {
+    transform: translate3d(340%, 0, 0);
+  }
+}
+
+/* Lifelike rhythmic ". . ." typing indicator scoped to Mina's .chat-aura-frame */
+.chat-aura-frame .typing-bubble {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(140, 103, 48, 0.14);
+  animation: minaTypingBubblePulse 1.8s ease-in-out infinite;
+}
+
+.chat-aura-frame .typing-bubble::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: translate3d(-140%, 0, 0);
+  will-change: transform;
+  animation: minaTypingSheen 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes minaTypingBubblePulse {
+  0%,
+  100% {
+    opacity: 0.92;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, -0.5px, 0);
+  }
+}
+
+@keyframes minaTypingSheen {
+  0% {
+    transform: translate3d(-140%, 0, 0);
+  }
+  65%,
+  100% {
+    transform: translate3d(260%, 0, 0);
+  }
+}
+
+.chat-aura-frame .typing-dots {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 14px;
+  padding-bottom: 1.5px;
+}
+
+.chat-aura-frame .typing-dot {
+  display: inline-block;
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 9999px;
+  background-color: #C6A876;
+  opacity: 0.38;
+  will-change: transform, opacity, background-color;
+  animation: minaTypingDotWave 1.26s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+
+.chat-aura-frame .typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.chat-aura-frame .typing-dot:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.chat-aura-frame .typing-dot:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes minaTypingDotWave {
+  0%,
+  72%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.84);
+    opacity: 0.38;
+    background-color: #C6A876;
+  }
+  26% {
+    transform: translate3d(0, -5.5px, 0) scale(1.18);
+    opacity: 1;
+    background-color: #8C6730;
+  }
+  48% {
+    transform: translate3d(0, 0.8px, 0) scale(0.94);
+    opacity: 0.62;
+    background-color: #A6824B;
+  }
+}
+
+/* Subtle luxury scroll-reveal fade-in & slide-up via GPU-composited CSS transitions */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  will-change: opacity, transform;
+  transition:
+    opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-delay-1 {
+  transition-delay: 90ms;
+}
+
+.scroll-reveal-delay-2 {
+  transition-delay: 180ms;
+}
+
+.scroll-reveal-delay-3 {
+  transition-delay: 260ms;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* Subtle luxury gold shimmer & gentle pulse for Mina's 5% voucher code */
+.voucher-code-shimmer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  vertical-align: baseline;
+  background: linear-gradient(135deg, #FFFDF9 0%, #FAF1E2 100%);
+  border: 1px solid rgba(140, 103, 48, 0.34);
+  border-radius: 6px;
+  padding: 1px 7px;
+  animation: voucherBadgePulse 3.2s ease-in-out infinite;
+}
+
+.voucher-code-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.78) 50%,
+    transparent 100%
+  );
+  transform: translate3d(-160%, 0, 0);
+  will-change: transform;
+  animation: voucherSheenSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.voucher-code-text {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-image: linear-gradient(
+    108deg,
+    #7B5825 0%,
+    #8C6730 35%,
+    #C69B52 50%,
+    #8C6730 65%,
+    #7B5825 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: voucherTextShimmer 3.2s ease-in-out infinite;
+}
+
+@keyframes voucherBadgePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(140, 103, 48, 0.08);
+    border-color: rgba(140, 103, 48, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(198, 168, 118, 0.22);
+    border-color: rgba(140, 103, 48, 0.52);
+  }
+}
+
+@keyframes voucherSheenSweep {
+  0%,
+  36% {
+    transform: translate3d(-160%, 0, 0);
+  }
+  82%,
+  100% {
+    transform: translate3d(320%, 0, 0);
+  }
+}
+
+@keyframes voucherTextShimmer {
+  0%,
+  30% {
+    background-position: 100% 0;
+  }
+  80%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
   .aurora-blob {
     animation: none;
   }
@@ -199,5 +506,31 @@ body {
     background-image: none;
     color: #1D1D1F;
     animation: none;
+  }
+  .chat-aura-frame:hover {
+    scale: 1;
+    translate: none;
+  }
+  .chat-aura-frame::before,
+  .btn-sheen-sweep::after,
+  .chat-aura-frame .typing-bubble::after,
+  .voucher-code-shimmer::after {
+    animation: none;
+    opacity: 0;
+  }
+  .voucher-code-shimmer {
+    animation: none;
+    box-shadow: none;
+  }
+  .voucher-code-text {
+    animation: none;
+    background-image: none;
+    color: #8C6730;
+  }
+  .chat-aura-frame .typing-bubble,
+  .chat-aura-frame .typing-dot {
+    animation: none;
+    opacity: 0.78;
+    background-color: #8C6730;
   }
 }
