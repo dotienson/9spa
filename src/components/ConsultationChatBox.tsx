@@ -94,11 +94,7 @@ const INITIAL_ANSWERS: ConsultationAnswers = {
   historyNote: '',
 };
 
-interface ConsultationChatBoxProps {
-  onActiveChange?: (isActive: boolean) => void;
-}
-
-export default function ConsultationChatBox({ onActiveChange }: ConsultationChatBoxProps) {
+export default function ConsultationChatBox() {
   const prefersReducedMotion = useReducedMotion();
   const [step, setStep] = useState<number>(1);
   const [profile, setProfile] = useState<ConsultationProfile>(INITIAL_PROFILE);
@@ -112,7 +108,6 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
   const [voucherCode, setVoucherCode] = useState<string>(() => generateMinaVoucherCode());
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
-  const isChatExpanded = step >= 2 || isDirectReferral;
   const chatRootRef = useRef<HTMLDivElement | null>(null);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
   const step6StartRef = useRef<HTMLDivElement | null>(null);
@@ -120,10 +115,6 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
   const copyTimerRef = useRef<number | null>(null);
   const confettiTimerRef = useRef<number | null>(null);
   const fallbackTextareaRef = useRef<HTMLTextAreaElement | null>(null);
-
-  useEffect(() => {
-    onActiveChange?.(isChatExpanded);
-  }, [isChatExpanded, onActiveChange]);
 
   useEffect(() => {
     let settleTimer: number | null = null;
@@ -205,7 +196,6 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
   }, [isFinalRewardVisible, voucherCode, prefersReducedMotion]);
 
   useEffect(() => {
-    if (!isChatExpanded) return;
     const container = messagesContainerRef.current;
     if (!container) return;
 
@@ -214,6 +204,11 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
 
     raf1 = window.requestAnimationFrame(() => {
       raf2 = window.requestAnimationFrame(() => {
+        if (step === 1 && !isDirectReferral) {
+          container.scrollTo({ top: 0, behavior: 'auto' });
+          return;
+        }
+
         if (step === 6 && !isTyping && !isDirectReferral && step6StartRef.current) {
           const containerRect = container.getBoundingClientRect();
           const targetRect = step6StartRef.current.getBoundingClientRect();
@@ -239,36 +234,10 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
       if (raf1) window.cancelAnimationFrame(raf1);
       if (raf2) window.cancelAnimationFrame(raf2);
     };
-  }, [step, isDirectReferral, isTyping, isChatExpanded, prefersReducedMotion]);
-
-  // Ensure the entire chat box stays comfortably inside the user's screen viewport when expanding or changing steps
-  useEffect(() => {
-    if (!isChatExpanded) return;
-    const timer = window.setTimeout(() => {
-      const box = chatRootRef.current;
-      if (!box) return;
-      const rect = box.getBoundingClientRect();
-      const stickyOffset = 68;
-      const viewportHeight = window.innerHeight;
-
-      if (rect.bottom > viewportHeight - 12 || rect.top < stickyOffset) {
-        const targetScrollY =
-          rect.height > viewportHeight - stickyOffset - 16
-            ? window.scrollY + rect.top - stickyOffset
-            : window.scrollY + rect.bottom - viewportHeight + 20;
-
-        window.scrollTo({
-          top: Math.max(0, targetScrollY),
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        });
-      }
-    }, 120);
-
-    return () => window.clearTimeout(timer);
-  }, [isChatExpanded, step, isDirectReferral, prefersReducedMotion]);
+  }, [step, isDirectReferral, isTyping, prefersReducedMotion]);
 
   useEffect(() => {
-    if (!showTextPreview || !isChatExpanded) return;
+    if (!showTextPreview) return;
     const container = messagesContainerRef.current;
     if (!container) return;
     const raf = window.requestAnimationFrame(() => {
@@ -278,7 +247,7 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
       });
     });
     return () => window.cancelAnimationFrame(raf);
-  }, [showTextPreview, isChatExpanded, prefersReducedMotion]);
+  }, [showTextPreview, prefersReducedMotion]);
 
   const triggerMinaTyping = (delayMs: number) => {
     if (prefersReducedMotion) return;
@@ -494,30 +463,24 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
     <motion.div
       id="mina"
       ref={chatRootRef}
-      layout={!prefersReducedMotion}
       initial={prefersReducedMotion ? false : { opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}
       transition={{
         duration: 0.65,
         ease: [0.16, 1, 0.3, 1],
-        layout: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
       }}
-      className={`chat-aura-frame scroll-mt-20 sm:scroll-mt-24 w-full ${
-        isChatExpanded
-          ? 'shadow-[0_14px_38px_-22px_rgba(140,103,48,0.22)]'
-          : ''
-      }`}
+      className="chat-aura-frame scroll-mt-20 sm:scroll-mt-24 w-full"
       aria-label="Hộp thoại tư vấn da cùng Mina tại 9 p.m. SkinCare"
     >
-      <div className="relative z-10 flex flex-col max-h-[calc(100dvh-5rem)] sm:max-h-[min(560px,calc(100dvh-5.75rem))] bg-white/88 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] overflow-hidden text-left">
+      <div className="relative z-10 flex flex-col h-[440px] sm:h-[468px] max-h-[calc(100dvh-5.25rem)] bg-white/88 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] overflow-hidden text-left">
         {showConfetti && <VoucherConfettiOverlay />}
 
         {/* Minimal Header (Zero pulsing dots / Zero pill clutter) */}
         <div className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 border-b border-black/[0.06] bg-white/55">
           <div className="flex items-center gap-2 min-w-0 text-xs">
             <span className="font-semibold text-[#8C6730] whitespace-nowrap">
-              Mina · Lễ tân 9pm
+              Mina · Lễ tân tự động của 9pm
             </span>
             <span className="text-[#86868B]" aria-hidden="true">
               ·
@@ -565,18 +528,10 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
           />
         </div>
 
-        {/* Scrollable Chat History Viewport — Moderate Expansion That Always Fits Screen */}
+        {/* Scrollable Chat History Viewport — Fixed Outer Box Size, Smooth Internal Scroll */}
         <div
           ref={messagesContainerRef}
-          className={`flex-1 min-h-0 overflow-y-auto overscroll-contain transition-[min-height,max-height,padding] duration-300 ${
-            isChatExpanded
-              ? isDirectReferral
-                ? 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[145px] sm:min-h-[165px] max-h-[32dvh] sm:max-h-[240px]'
-                : step === 6
-                ? 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[200px] sm:min-h-[230px] max-h-[38dvh] sm:max-h-[320px]'
-                : 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[165px] sm:min-h-[195px] max-h-[28dvh] sm:max-h-[250px]'
-              : 'px-4 sm:px-5 py-3.5 space-y-2.5'
-          }`}
+          className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 sm:px-5 py-3.5 space-y-3"
         >
           {/* Step 1 Mina Greeting Bubble (Always visible from the start) */}
           <div className="flex justify-start">
@@ -898,163 +853,189 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
           </form>
         )}
 
-        {/* Steps 2–5: Multi-Select Options + Optional Note + Continue */}
-        {currentQuestionConfig && !isTyping && (
-          <div className="space-y-2">
-            <div className="flex flex-wrap gap-1.5 max-h-[26dvh] sm:max-h-none overflow-y-auto overscroll-contain pr-0.5">
-              {visibleStepOptions.map((option) => {
-                const isSelected = answers[currentQuestionConfig.id].includes(option.id);
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    aria-pressed={isSelected}
-                    onClick={() => toggleOption(currentQuestionConfig.id, option.id)}
-                    className={`inline-flex items-center gap-1.5 min-h-[34px] sm:min-h-[36px] px-2.5 sm:px-3 py-1 rounded-xl text-xs font-medium border text-left transition-all duration-150 active:scale-[0.97] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35 ${
-                      isSelected
-                        ? 'bg-[#F6EFE4] border-[#8C6730]/55 text-[#5C3F17] font-semibold'
-                        : 'bg-white border-black/[0.08] text-[#1D1D1F] hover:border-black/[0.18]'
-                    }`}
-                  >
-                    {isSelected && <Check className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />}
-                    <span>{option.label}</span>
-                  </button>
-                );
-              })}
-            </div>
+        {/* Steps 2–5: Fixed-Height Dock for Multi-Select Options + Optional Note + Continue */}
+        {!isDirectReferral && step >= 2 && step <= 5 && (
+          <div className="h-[162px] sm:h-[168px] flex flex-col justify-between">
+            {isTyping || !currentQuestionConfig ? (
+              <div className="flex-1 flex items-center justify-center text-xs text-[#86868B]">
+                Mina đang chuẩn bị lựa chọn cho mình...
+              </div>
+            ) : (
+              <>
+                <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-0.5 content-start flex flex-wrap gap-1.5">
+                  {visibleStepOptions.map((option) => {
+                    const isSelected = answers[currentQuestionConfig.id].includes(option.id);
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => toggleOption(currentQuestionConfig.id, option.id)}
+                        className={`inline-flex items-center gap-1.5 min-h-[32px] sm:min-h-[34px] px-2.5 sm:px-3 py-1 rounded-xl text-xs font-medium border text-left transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35 ${
+                          isSelected
+                            ? 'bg-[#F6EFE4] border-[#8C6730]/55 text-[#5C3F17] font-semibold'
+                            : 'bg-white border-black/[0.08] text-[#1D1D1F] hover:border-black/[0.18]'
+                        }`}
+                      >
+                        {isSelected && <Check className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />}
+                        <span>{option.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-              <input
-                type="text"
-                value={
-                  answers[`${currentQuestionConfig.id}Note` as keyof ConsultationAnswers] as string
-                }
-                onChange={(e) => handleNoteChange(currentQuestionConfig.id, e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    handleContinueQuestionStep(currentQuestionConfig);
-                  }
-                }}
-                placeholder={currentQuestionConfig.notePlaceholder}
-                aria-label="Ghi chú thêm"
-                className="flex-1 h-10 rounded-xl bg-white border border-black/[0.09] px-3 text-xs sm:text-[13px] text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none focus:border-[#8C6730] focus:ring-2 focus:ring-[#8C6730]/20 transition-colors"
-              />
-              <button
-                type="button"
-                onClick={() => handleContinueQuestionStep(currentQuestionConfig)}
-                className="inline-flex items-center justify-center gap-1.5 h-10 px-4 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-xs sm:text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
-              >
-                <span>{currentQuestionConfig.submitLabel}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+                <div className="shrink-0 pt-2 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={
+                        answers[
+                          `${currentQuestionConfig.id}Note` as keyof ConsultationAnswers
+                        ] as string
+                      }
+                      onChange={(e) => handleNoteChange(currentQuestionConfig.id, e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleContinueQuestionStep(currentQuestionConfig);
+                        }
+                      }}
+                      placeholder={currentQuestionConfig.notePlaceholder}
+                      aria-label="Ghi chú thêm"
+                      className="flex-1 h-9 rounded-xl bg-white border border-black/[0.09] px-3 text-xs sm:text-[13px] text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none focus:border-[#8C6730] focus:ring-2 focus:ring-[#8C6730]/20 transition-colors"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleContinueQuestionStep(currentQuestionConfig)}
+                      className="inline-flex items-center justify-center gap-1.5 h-9 px-3.5 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-xs sm:text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
+                    >
+                      <span>{currentQuestionConfig.submitLabel}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
-            {errorMsg && (
-              <p className="text-xs text-[#B45309]" role="alert">
-                {errorMsg}
-              </p>
+                  {errorMsg && (
+                    <p className="text-[11.5px] text-[#B45309] leading-tight" role="alert">
+                      {errorMsg}
+                    </p>
+                  )}
+                </div>
+              </>
             )}
           </div>
         )}
 
         {/* Direct Doctor Referral Dock (<18 or >60 / >80 / >100) */}
-        {isDirectReferral && !isTyping && (
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-            <a
-              href="https://zalo.me/0374558669"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 rounded-xl bg-[#0068FF] hover:bg-[#0055D4] text-white text-[13px] sm:text-sm font-semibold transition-colors duration-150 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
-            >
-              <MessageCircle className="w-4 h-4 shrink-0" />
-              <span>Mở Zalo gặp trực tiếp bác sĩ</span>
-            </a>
-          </div>
-        )}
-
-        {/* Step 6: Copy + Open Zalo + Direct Booking Buttons */}
-        {!isDirectReferral && step === 6 && !isTyping && (
-          <div className="space-y-2">
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={handleCopySummary}
-                className={`inline-flex items-center justify-center gap-1.5 min-h-[42px] sm:min-h-[44px] px-2.5 sm:px-3 py-2 rounded-xl text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
-                  copyStatus === 'copied'
-                    ? 'bg-[#096B46] focus-visible:ring-[#0C7F54]/40'
-                    : 'bg-[#0C7F54] hover:bg-[#096B46] focus-visible:ring-[#0C7F54]/40'
-                }`}
-              >
-                {copyStatus === 'copied' ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 shrink-0" />
-                    <span>Đã copy nội dung</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 shrink-0" />
-                    <span>Copy gửi Zalo</span>
-                  </>
-                )}
-              </button>
-
+        {isDirectReferral && (
+          <div className="min-h-[44px] flex items-center">
+            {isTyping ? (
+              <div className="w-full text-center text-xs text-[#86868B]">
+                Mina đang chuyển tiếp đến bác sĩ...
+              </div>
+            ) : (
               <a
                 href="https://zalo.me/0374558669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 min-h-[42px] sm:min-h-[44px] px-2.5 sm:px-3 py-2 rounded-xl bg-[#0068FF] hover:bg-[#0055D4] text-white text-xs sm:text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
+                className="w-full inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 rounded-xl bg-[#0068FF] hover:bg-[#0055D4] text-white text-[13px] sm:text-sm font-semibold transition-colors duration-150 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
               >
-                <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-                <span>Mở Zalo ngay</span>
+                <MessageCircle className="w-4 h-4 shrink-0" />
+                <span>Mở Zalo gặp trực tiếp bác sĩ</span>
               </a>
-            </div>
+            )}
+          </div>
+        )}
 
-            <div className="grid grid-cols-2 gap-2">
-              {/* Desktop Cal.com Popup Triggers */}
-              <button
-                type="button"
-                data-cal-link="9pmskincare/basic"
-                data-cal-namespace="basic"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="hidden md:inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#5C3F17] border border-[#8C6730]/22 text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
-              >
-                <Calendar className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />
-                <span>Đặt lịch cơ bản</span>
-              </button>
+        {/* Step 6: Copy + Open Zalo + Direct Booking Buttons */}
+        {!isDirectReferral && step === 6 && (
+          <div className="min-h-[92px] sm:min-h-[96px] flex flex-col justify-center">
+            {isTyping ? (
+              <div className="text-center text-xs text-[#86868B]">
+                Mina đang tổng hợp phác đồ đề xuất cho mình...
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopySummary}
+                    className={`inline-flex items-center justify-center gap-1.5 min-h-[42px] sm:min-h-[44px] px-2.5 sm:px-3 py-2 rounded-xl text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
+                      copyStatus === 'copied'
+                        ? 'bg-[#096B46] focus-visible:ring-[#0C7F54]/40'
+                        : 'bg-[#0C7F54] hover:bg-[#096B46] focus-visible:ring-[#0C7F54]/40'
+                    }`}
+                  >
+                    {copyStatus === 'copied' ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 shrink-0" />
+                        <span>Đã copy nội dung</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 shrink-0" />
+                        <span>Copy gửi Zalo</span>
+                      </>
+                    )}
+                  </button>
 
-              <button
-                type="button"
-                data-cal-link="9pmskincare/120min"
-                data-cal-namespace="120min"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="hidden md:inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
-              >
-                <CalendarClock className="w-3.5 h-3.5 text-white/90 shrink-0" />
-                <span>Đặt lịch chuyên sâu</span>
-              </button>
+                  <a
+                    href="https://zalo.me/0374558669"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 min-h-[42px] sm:min-h-[44px] px-2.5 sm:px-3 py-2 rounded-xl bg-[#0068FF] hover:bg-[#0055D4] text-white text-xs sm:text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0068FF]/40"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>Mở Zalo ngay</span>
+                  </a>
+                </div>
 
-              {/* Mobile Direct Booking Links */}
-              <a
-                href="https://cal.com/9pmskincare/basic"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex md:hidden items-center justify-center gap-1.5 min-h-[42px] px-2.5 py-2 rounded-xl bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#5C3F17] border border-[#8C6730]/22 text-xs font-semibold transition-colors duration-150 whitespace-nowrap"
-              >
-                <Calendar className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />
-                <span>Đặt lịch cơ bản</span>
-              </a>
+                <div className="grid grid-cols-2 gap-2">
+                  {/* Desktop Cal.com Popup Triggers */}
+                  <button
+                    type="button"
+                    data-cal-link="9pmskincare/basic"
+                    data-cal-namespace="basic"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    className="hidden md:inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#5C3F17] border border-[#8C6730]/22 text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/40"
+                  >
+                    <Calendar className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />
+                    <span>Đặt lịch cơ bản</span>
+                  </button>
 
-              <a
-                href="https://cal.com/9pmskincare/120min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex md:hidden items-center justify-center gap-1.5 min-h-[42px] px-2.5 py-2 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-xs font-semibold transition-colors duration-150 whitespace-nowrap"
-              >
-                <CalendarClock className="w-3.5 h-3.5 text-white/90 shrink-0" />
-                <span>Đặt lịch chuyên sâu</span>
-              </a>
-            </div>
+                  <button
+                    type="button"
+                    data-cal-link="9pmskincare/120min"
+                    data-cal-namespace="120min"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    className="hidden md:inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-[13px] font-semibold transition-colors duration-150 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#966D31]/40"
+                  >
+                    <CalendarClock className="w-3.5 h-3.5 text-white/90 shrink-0" />
+                    <span>Đặt lịch chuyên sâu</span>
+                  </button>
+
+                  {/* Mobile Direct Booking Links */}
+                  <a
+                    href="https://cal.com/9pmskincare/basic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex md:hidden items-center justify-center gap-1.5 min-h-[42px] px-2.5 py-2 rounded-xl bg-[#F6EFE4] hover:bg-[#EDE0CC] text-[#5C3F17] border border-[#8C6730]/22 text-xs font-semibold transition-colors duration-150 whitespace-nowrap"
+                  >
+                    <Calendar className="w-3.5 h-3.5 text-[#8C6730] shrink-0" />
+                    <span>Đặt lịch cơ bản</span>
+                  </a>
+
+                  <a
+                    href="https://cal.com/9pmskincare/120min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex md:hidden items-center justify-center gap-1.5 min-h-[42px] px-2.5 py-2 rounded-xl bg-[#966D31] hover:bg-[#7E5924] text-white text-xs font-semibold transition-colors duration-150 whitespace-nowrap"
+                  >
+                    <CalendarClock className="w-3.5 h-3.5 text-white/90 shrink-0" />
+                    <span>Đặt lịch chuyên sâu</span>
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

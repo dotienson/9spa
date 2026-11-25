@@ -23,7 +23,6 @@ interface HomeLandingProps {
 
 export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandingProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [isChatActive, setIsChatActive] = useState(false);
 
   const handleOpenDoctor = () => {
     setCurrentTab('doctor');
@@ -32,25 +31,13 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
 
   return (
     <div className="w-full bg-transparent text-[#1D1D1F]">
-      {/* BAND 1: Luminous Aurora Hero — Brand Identity + Inline Founder Quote & Expanding Consultation Chat */}
+      {/* BAND 1: Luminous Aurora Hero — Brand Identity + Inline Founder Quote & Fixed-Size Consultation Chat */}
       <section className="w-full border-b border-black/[0.05]">
-        <div
-          className={`mx-auto px-4 sm:px-6 pt-8 pb-10 sm:pt-12 sm:pb-14 transition-[max-width] duration-300 ${
-            isChatActive ? 'max-w-[1088px]' : 'max-w-5xl'
-          }`}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-9 items-start">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-10 sm:pt-12 sm:pb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* Left Column: Large Sharp Logo + Brand Positioning + Horizontal Advantage Cards */}
-            <div
-              className={`${
-                isChatActive ? 'lg:col-span-5' : 'lg:col-span-6'
-              } lg:pt-2 min-w-0 w-full flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-300`}
-            >
-              <div
-                className={`${
-                  isChatActive ? 'w-44 sm:w-52 lg:w-52' : 'w-48 sm:w-56 md:w-64'
-                } -my-5 sm:-my-6 overflow-hidden flex items-center justify-center lg:justify-start transition-all duration-300`}
-              >
+            <div className="lg:col-span-6 lg:pt-2 min-w-0 w-full flex flex-col items-center lg:items-start text-center lg:text-left">
+              <div className="w-48 sm:w-56 md:w-64 -my-5 sm:-my-6 overflow-hidden flex items-center justify-center lg:justify-start">
                 <Logo className="w-full h-auto contrast-[1.06]" />
               </div>
 
@@ -62,11 +49,7 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
 
               <h1
                 className="mt-2.5 font-semibold tracking-[-0.03em] text-[#1D1D1F] leading-[1.16]"
-                style={{
-                  fontSize: isChatActive
-                    ? 'clamp(1.75rem, 2.9vw, 2.4rem)'
-                    : 'clamp(1.85rem, 3.6vw, 2.75rem)',
-                }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 2.75rem)' }}
               >
                 <span className="block overflow-hidden pb-0.5">
                   <motion.span
@@ -111,12 +94,8 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
               </div>
             </div>
 
-            {/* Right Column: Translucent White Frosted Quote Card + Simulated Consultation Chat Box */}
-            <div
-              className={`${
-                isChatActive ? 'lg:col-span-7' : 'lg:col-span-6'
-              } min-w-0 space-y-4 transition-all duration-300`}
-            >
+            {/* Right Column: Translucent White Frosted Quote Card + Fixed-Size Consultation Chat Box */}
+            <div className="lg:col-span-6 min-w-0 space-y-4">
               <ScrollReveal delay={1}>
                 <div className="bg-white/78 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] p-6 sm:p-7 border border-black/[0.07]">
                   <blockquote className="text-[15.5px] sm:text-[16.5px] text-[#1D1D1F] leading-[1.78] font-normal tracking-[-0.01em] text-justify">
@@ -145,7 +124,7 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 </div>
               </ScrollReveal>
 
-              <ConsultationChatBox onActiveChange={setIsChatActive} />
+              <ConsultationChatBox />
             </div>
           </div>
         </div>
