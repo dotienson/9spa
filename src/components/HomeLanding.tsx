@@ -36,19 +36,19 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
       <section className="w-full border-b border-black/[0.05]">
         <div
           className={`mx-auto px-4 sm:px-6 pt-8 pb-10 sm:pt-12 sm:pb-14 transition-[max-width] duration-300 ${
-            isChatActive ? 'max-w-6xl' : 'max-w-5xl'
+            isChatActive ? 'max-w-[1088px]' : 'max-w-5xl'
           }`}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-9 items-start">
             {/* Left Column: Large Sharp Logo + Brand Positioning + Horizontal Advantage Cards */}
             <div
               className={`${
-                isChatActive ? 'lg:col-span-4' : 'lg:col-span-6'
+                isChatActive ? 'lg:col-span-5' : 'lg:col-span-6'
               } lg:pt-2 min-w-0 w-full flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-300`}
             >
               <div
                 className={`${
-                  isChatActive ? 'w-44 sm:w-52 lg:w-48' : 'w-48 sm:w-56 md:w-64'
+                  isChatActive ? 'w-44 sm:w-52 lg:w-52' : 'w-48 sm:w-56 md:w-64'
                 } -my-5 sm:-my-6 overflow-hidden flex items-center justify-center lg:justify-start transition-all duration-300`}
               >
                 <Logo className="w-full h-auto contrast-[1.06]" />
@@ -64,7 +64,7 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
                 className="mt-2.5 font-semibold tracking-[-0.03em] text-[#1D1D1F] leading-[1.16]"
                 style={{
                   fontSize: isChatActive
-                    ? 'clamp(1.65rem, 2.5vw, 2.2rem)'
+                    ? 'clamp(1.75rem, 2.9vw, 2.4rem)'
                     : 'clamp(1.85rem, 3.6vw, 2.75rem)',
                 }}
               >
@@ -114,7 +114,7 @@ export default function HomeLanding({ setCurrentTab, onOpenServices }: HomeLandi
             {/* Right Column: Translucent White Frosted Quote Card + Simulated Consultation Chat Box */}
             <div
               className={`${
-                isChatActive ? 'lg:col-span-8' : 'lg:col-span-6'
+                isChatActive ? 'lg:col-span-7' : 'lg:col-span-6'
               } min-w-0 space-y-4 transition-all duration-300`}
             >
               <ScrollReveal delay={1}>

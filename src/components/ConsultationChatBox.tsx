@@ -241,6 +241,32 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
     };
   }, [step, isDirectReferral, isTyping, isChatExpanded, prefersReducedMotion]);
 
+  // Ensure the entire chat box stays comfortably inside the user's screen viewport when expanding or changing steps
+  useEffect(() => {
+    if (!isChatExpanded) return;
+    const timer = window.setTimeout(() => {
+      const box = chatRootRef.current;
+      if (!box) return;
+      const rect = box.getBoundingClientRect();
+      const stickyOffset = 68;
+      const viewportHeight = window.innerHeight;
+
+      if (rect.bottom > viewportHeight - 12 || rect.top < stickyOffset) {
+        const targetScrollY =
+          rect.height > viewportHeight - stickyOffset - 16
+            ? window.scrollY + rect.top - stickyOffset
+            : window.scrollY + rect.bottom - viewportHeight + 20;
+
+        window.scrollTo({
+          top: Math.max(0, targetScrollY),
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        });
+      }
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [isChatExpanded, step, isDirectReferral, prefersReducedMotion]);
+
   useEffect(() => {
     if (!showTextPreview || !isChatExpanded) return;
     const container = messagesContainerRef.current;
@@ -477,18 +503,18 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
         ease: [0.16, 1, 0.3, 1],
         layout: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
       }}
-      className={`chat-aura-frame scroll-mt-20 sm:scroll-mt-24 ${
+      className={`chat-aura-frame scroll-mt-20 sm:scroll-mt-24 w-full ${
         isChatExpanded
-          ? '-mx-2 sm:mx-0 shadow-[0_14px_40px_-22px_rgba(140,103,48,0.22)]'
+          ? 'shadow-[0_14px_38px_-22px_rgba(140,103,48,0.22)]'
           : ''
       }`}
       aria-label="Hộp thoại tư vấn da cùng Mina tại 9 p.m. SkinCare"
     >
-      <div className="relative z-10 bg-white/88 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] overflow-hidden text-left">
+      <div className="relative z-10 flex flex-col max-h-[calc(100dvh-5rem)] sm:max-h-[min(560px,calc(100dvh-5.75rem))] bg-white/88 backdrop-blur-xl rounded-[20px] sm:rounded-[24px] overflow-hidden text-left">
         {showConfetti && <VoucherConfettiOverlay />}
 
         {/* Minimal Header (Zero pulsing dots / Zero pill clutter) */}
-        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-black/[0.06] bg-white/55">
+        <div className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 border-b border-black/[0.06] bg-white/55">
           <div className="flex items-center gap-2 min-w-0 text-xs">
             <span className="font-semibold text-[#8C6730] whitespace-nowrap">
               Mina · Lễ tân 9pm
@@ -527,7 +553,7 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
         </div>
 
         {/* Hairline Animated Step Progress Bar */}
-        <div className="h-[2px] w-full bg-black/[0.04] overflow-hidden" aria-hidden="true">
+        <div className="shrink-0 h-[2px] w-full bg-black/[0.04] overflow-hidden" aria-hidden="true">
           <motion.div
             className="h-full w-full bg-gradient-to-r from-[#C6A876] to-[#8C6730] origin-left"
             initial={false}
@@ -539,15 +565,17 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
           />
         </div>
 
-        {/* Scrollable Chat History Viewport — Expands Generously in Width & Height When Chatting */}
+        {/* Scrollable Chat History Viewport — Moderate Expansion That Always Fits Screen */}
         <div
           ref={messagesContainerRef}
-          className={`overflow-y-auto overscroll-contain transition-[min-height,max-height,padding] duration-300 ${
+          className={`flex-1 min-h-0 overflow-y-auto overscroll-contain transition-[min-height,max-height,padding] duration-300 ${
             isChatExpanded
               ? isDirectReferral
-                ? 'px-5 sm:px-7 py-5 space-y-4 min-h-[240px] sm:min-h-[270px] max-h-[55dvh]'
-                : 'px-5 sm:px-7 py-5 sm:py-6 space-y-4 min-h-[380px] sm:min-h-[440px] max-h-[62dvh] sm:max-h-[580px]'
-              : 'px-4 sm:px-6 py-4 space-y-3'
+                ? 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[145px] sm:min-h-[165px] max-h-[32dvh] sm:max-h-[240px]'
+                : step === 6
+                ? 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[200px] sm:min-h-[230px] max-h-[38dvh] sm:max-h-[320px]'
+                : 'px-4 sm:px-5 py-3.5 sm:py-4 space-y-3 min-h-[165px] sm:min-h-[195px] max-h-[28dvh] sm:max-h-[250px]'
+              : 'px-4 sm:px-5 py-3.5 space-y-2.5'
           }`}
         >
           {/* Step 1 Mina Greeting Bubble (Always visible from the start) */}
@@ -775,7 +803,7 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
       </div>
 
       {/* Interactive Input Dock (adapts cleanly to current step) */}
-      <div className="px-4 sm:px-6 py-3.5 border-t border-black/[0.06] bg-white/55">
+      <div className="shrink-0 px-3.5 sm:px-5 py-3 border-t border-black/[0.06] bg-white/55">
         {/* Step 1: Compact Name + Age + Gender Form */}
         {step === 1 && (
           <form onSubmit={handleStartConsultation} className="space-y-2.5" noValidate>
@@ -872,8 +900,8 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
 
         {/* Steps 2–5: Multi-Select Options + Optional Note + Continue */}
         {currentQuestionConfig && !isTyping && (
-          <div className="space-y-2.5">
-            <div className="flex flex-wrap gap-1.5">
+          <div className="space-y-2">
+            <div className="flex flex-wrap gap-1.5 max-h-[26dvh] sm:max-h-none overflow-y-auto overscroll-contain pr-0.5">
               {visibleStepOptions.map((option) => {
                 const isSelected = answers[currentQuestionConfig.id].includes(option.id);
                 return (
@@ -882,7 +910,7 @@ export default function ConsultationChatBox({ onActiveChange }: ConsultationChat
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => toggleOption(currentQuestionConfig.id, option.id)}
-                    className={`inline-flex items-center gap-1.5 min-h-[38px] px-3 py-1.5 rounded-xl text-xs font-medium border text-left transition-all duration-150 active:scale-[0.97] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35 ${
+                    className={`inline-flex items-center gap-1.5 min-h-[34px] sm:min-h-[36px] px-2.5 sm:px-3 py-1 rounded-xl text-xs font-medium border text-left transition-all duration-150 active:scale-[0.97] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6730]/35 ${
                       isSelected
                         ? 'bg-[#F6EFE4] border-[#8C6730]/55 text-[#5C3F17] font-semibold'
                         : 'bg-white border-black/[0.08] text-[#1D1D1F] hover:border-black/[0.18]'
