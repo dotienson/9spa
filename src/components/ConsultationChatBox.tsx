@@ -183,7 +183,7 @@ export default function ConsultationChatBox() {
   }, []);
 
   useEffect(() => {
-    if (!isFinalRewardVisible || prefersReducedMotion) {
+    if (!isFinalRewardVisible) {
       setShowConfetti(false);
       return;
     }
@@ -193,7 +193,7 @@ export default function ConsultationChatBox() {
     confettiTimerRef.current = window.setTimeout(() => {
       setShowConfetti(false);
     }, 2500);
-  }, [isFinalRewardVisible, voucherCode, prefersReducedMotion]);
+  }, [isFinalRewardVisible, voucherCode]);
 
   useEffect(() => {
     const container = messagesContainerRef.current;
@@ -250,7 +250,6 @@ export default function ConsultationChatBox() {
   }, [showTextPreview, prefersReducedMotion]);
 
   const triggerMinaTyping = (delayMs: number) => {
-    if (prefersReducedMotion) return;
     setIsTyping(true);
     if (typingTimerRef.current) window.clearTimeout(typingTimerRef.current);
     typingTimerRef.current = window.setTimeout(() => {

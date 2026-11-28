@@ -26,8 +26,7 @@ export default function ScrollReveal({
   const ref = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true;
-    if (!('IntersectionObserver' in window)) return true;
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return !('IntersectionObserver' in window);
   });
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SERVICES } from '../data/services';
 
@@ -15,7 +15,6 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
   const [isHovered, setIsHovered] = useState(false);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const touchStartX = useRef<number | null>(null);
-  const prefersReducedMotion = useReducedMotion();
 
   const total = SERVICES.length;
   const current = SERVICES[activeIndex];
@@ -44,10 +43,10 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
   }, [total]);
 
   useEffect(() => {
-    if (isHovered || prefersReducedMotion) return;
+    if (isHovered) return;
     const timer = window.setInterval(handleNext, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [isHovered, prefersReducedMotion, handleNext]);
+  }, [isHovered, handleNext]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -65,7 +64,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
 
   const slideVariants = {
     enter: (dir: number) => ({
-      x: prefersReducedMotion ? 0 : dir > 0 ? 28 : -28,
+      x: dir > 0 ? 28 : -28,
       opacity: 0,
     }),
     center: {
@@ -73,7 +72,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
       opacity: 1,
     },
     exit: (dir: number) => ({
-      x: prefersReducedMotion ? 0 : dir > 0 ? -28 : 28,
+      x: dir > 0 ? -28 : 28,
       opacity: 0,
     }),
   };
@@ -121,7 +120,7 @@ export default function ServiceCarousel({ onOpenAllServices }: ServiceCarouselPr
             animate="center"
             exit="exit"
             transition={{
-              duration: prefersReducedMotion ? 0.15 : 0.34,
+              duration: 0.34,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="grid grid-cols-1 md:grid-cols-12 items-stretch"
